@@ -31,7 +31,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @RequestMapping(value = "/categorias")
+    @RequestMapping(value = "/")
     public ModelAndView listaCategoria(ModelAndView model){
         List<Categoria> listaCategoria = categoriaService.buscarTodos();
         model.addObject("listaCategoria", listaCategoria);
