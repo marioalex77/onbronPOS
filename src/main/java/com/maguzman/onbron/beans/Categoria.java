@@ -1,5 +1,7 @@
 package com.maguzman.onbron.beans;
-
+/**
+ * Created by maguzman on 27/04/2017.
+ */
 import java.io.Serializable;
 
 import javax.persistence.Column;
