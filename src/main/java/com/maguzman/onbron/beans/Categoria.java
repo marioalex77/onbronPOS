@@ -65,5 +65,4 @@ public class Categoria implements Serializable {
         // TODO Auto-generated method stub
         return super.toString();
     }
-
 }
