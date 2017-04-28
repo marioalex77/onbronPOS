@@ -1,18 +1,14 @@
-package com.maguzman.onbron.com.maguzman.onbron.pos.controller;
+package com.maguzman.onbron.pos.controller;
 
 /**
  * Created by maguzman on 27/04/2017.
  */
 
-import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +27,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = {"/posAdmin/categoria/list","/categoria/list","/"}, method = RequestMethod.GET)
     public ModelAndView listaCategoria(ModelAndView model){
         List<Categoria> listaCategoria = categoriaService.buscarTodos();
         model.addObject("listaCategoria", listaCategoria);
