@@ -8,9 +8,9 @@ import com.maguzman.onbron.beans.Categoria;
 import java.util.List;
 
 public interface CategoriaDAO {
-    Categoria buscarPorClave(Integer id);
+    Categoria buscarPorClave(int id);
     List<Categoria> buscarTodos();
     void salvar(Categoria categoria);
-    void borrar(Integer id);
+    void borrar(int id);
     Categoria actualizar(Categoria categoria);
 }

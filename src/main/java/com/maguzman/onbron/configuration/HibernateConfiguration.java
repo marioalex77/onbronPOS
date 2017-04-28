@@ -23,14 +23,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({ "com.maguzman.onbron.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
-    @Autowired
+
+
     private Environment environment;
+
+    @Autowired
+    public HibernateConfiguration(Environment environment){
+        this.environment = environment;
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.maguzman.onbron.beans" });
+        sessionFactory.setPackagesToScan("com.maguzman.onbron.beans");
+        //sessionFactory.setPackagesToScan(new String[] { "com.maguzman.onbron.beans" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -46,7 +53,7 @@ public class HibernateConfiguration {
     }
 
     @Bean
-    private Properties hibernateProperties() {
+    public Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
