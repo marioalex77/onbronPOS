@@ -9,9 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="impuesto")
 public class Impuesto implements Serializable {
     /**
      *
@@ -20,11 +21,10 @@ public class Impuesto implements Serializable {
     @Id
     @GeneratedValue
     private int idImpuesto;
-    @Column(name="description",nullable=false)
+    @Size(min=3,max=50, message = "Descripcion no puede ser mayor a 50 caracteres")
     private String descripcion;
-    @Column(name="porcentaje",nullable=false)
+    @Digits(integer = 2, fraction = 3, message = "El valor no puede ser mayor a 99.999")
     private double porcentaje;
-    @Column(name="habilitado")
     private char habilitado;
 
     public Impuesto() {

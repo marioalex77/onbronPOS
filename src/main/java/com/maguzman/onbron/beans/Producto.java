@@ -3,11 +3,11 @@ package com.maguzman.onbron.beans;
  * Created by maguzman on 27/04/2017.
  */
 import java.io.Serializable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 
+@Entity
 public class Producto implements Serializable{
 
     /**
@@ -15,11 +15,18 @@ public class Producto implements Serializable{
      */
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue
     private int idProducto;
+    @Size(min=3, max=255)
     private String codigo;
+    @Size(min=3, max=255)
     private String nombre;
+    @Digits(integer = 8, fraction = 2, message = "El valor no puede ser mayor a 99999999.99")
     private double precioUnitario;
+    @Digits(integer = 8, fraction = 2, message = "El valor no puede ser mayor a 99999999.99")
     private double precioCompra;
+    @Digits(integer = 11, fraction = 0)
     private int orden;
     private String descripcion;
     private char habilitado;

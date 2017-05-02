@@ -45,8 +45,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      * It's a known bug in Spring [https://jira.spring.io/browse/SPR-6164], still present in Spring 4.1.7.
      * This is a workaround for this issue.
      */
-    @Override
+   /* @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
-    }
+    }*/
 }

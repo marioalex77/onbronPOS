@@ -9,9 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="imagen")
 public class Imagen implements Serializable {
     /**
      *
@@ -20,12 +20,10 @@ public class Imagen implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="idImagen")
     private int idImagen;
-    @Column(name="nombre", nullable=false)
+    @Size(min=3, max=255)
     private String nombre;
     @Lob
-    @Column(name="image", nullable=false, columnDefinition="mediumblob")
     private byte[] imagen;
 
     public Imagen() {

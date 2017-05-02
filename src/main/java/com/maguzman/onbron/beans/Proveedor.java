@@ -9,9 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="proveedor")
 public class Proveedor implements Serializable {
     /**
      *
@@ -21,10 +21,12 @@ public class Proveedor implements Serializable {
     @Id
     @GeneratedValue
     private int idProveedor;
-    @Column(name="ncr",nullable=false)
-    private String nrc;
-    @Column(name="nombre",nullable=false)
+    @Size(min=3, max=15, message = "El numero de registro de contribuyente no puede ser mayor a 15 caracteres")
+    private String nrc;// Numero de registro de contribuyente
+    @Size(min=3, max=255, message = "El nombre del proveedor no puede ser mayor a 15 caracteres")
     private String nombre;
+    @Size(min=3, max=17, message = "El NIT del proveedor no puede ser mayor a 17 caracteres")
+    private String nit;
 
     public Proveedor() {
         this.nrc = "";
@@ -66,5 +68,13 @@ public class Proveedor implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 }
