@@ -1,0 +1,932 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<base href="http://demo.tecdiary.my/spos/" />
+<title>Categories | Simple POS</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="http://demo.tecdiary.my/spos/assets/images/favicon.ico" />
+<link rel="stylesheet" href="http://demo.tecdiary.my/spos/assets/css/bootstrap.css" type="text/css" charset="utf-8">
+<link rel="stylesheet" href="http://demo.tecdiary.my/spos/assets/css/datatables.css" type="text/css">
+<link rel="stylesheet" href="http://demo.tecdiary.my/spos/assets/css/dash.css" type="text/css">
+<link rel="stylesheet" href="http://demo.tecdiary.my/spos/assets/css/non-responsive.css" type="text/css">
+<script src="http://demo.tecdiary.my/spos/assets/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.tip').tooltip();
+	$('.alert').click(function(){ $(this).fadeTo(500, 0).slideUp(500, function(){ $(this).remove(); }); });
+	window.setTimeout(function() { $(".alert").fadeTo(500, 0).slideUp(500, function(){ $(this).remove(); }); }, 8000);
+});
+</script>
+</head>
+<body>
+<div id="wrap">
+<div class="navbar navbar-static-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand">Simple POS</a> 
+    </div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown"> <a class="dropdown-toggle tip" data-toggle="dropdown" href="#" data-placement="right" title="Language"><img src="http://demo.tecdiary.my/spos/assets/images/english.png" style="margin-top:-1px" align="middle"></a>
+          <ul class="dropdown-menu" style="min-width: 60px;" role="menu" aria-labelledby="dLabel">
+                        <li><a href="http://demo.tecdiary.my/spos/index.php?module=pos&view=language&lang=english"><img src="http://demo.tecdiary.my/spos/assets/images/english.png" class="language-img"> &nbsp;&nbsp;
+              English              </a></li>
+                      </ul>
+        </li>
+         
+        <li><a href="http://demo.tecdiary.my/spos/index.php?module=settings" class="tip" data-placement="right" title="Home"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li><a href="http://demo.tecdiary.my/spos/index.php?module=settings&view=system_setting" class="tip" data-placement="right" title="Settings"><i class="glyphicon glyphicon-cog"></i></a></li>
+                <li><a href="http://demo.tecdiary.my/spos/index.php?module=pos" class="tip" data-placement="right" title="POS Sale"><i class="glyphicon glyphicon-th-large"></i></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Admin! <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=change_password">Change Password</a></li>
+            <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="pull-right">
+                <a href="http://codecanyon.net/item/simple-pos-point-of-sale-made-easy/3947976?ref=tecdiary" class="tip btn btn-default btn-sm pull-left external" style="padding:5px 8px; margin: 5px 5px 5px 5px;" title="<strong>Liked?</strong> Let's Purchase<br><strong>Have Suggestion?</strong> Please send email to contact@tecdiary.com" data-html="true" data-placement="bottom"> Buy Now </a>
+                      
+      <ul class="nav navbar-nav">
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Products          <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.php?module=products">
+              List Products              </a></li>
+            <li><a href="index.php?module=products&view=add">
+              Add Product              </a></li>
+            <li><a href="index.php?module=products&view=import">
+              Import by CSV              </a></li>
+            <li><a href="index.php?module=products&view=sheet">
+              Print Barcode              </a></li>
+            <li><a href="index.php?module=products&view=labels">
+              Print Lablels              </a></li>    
+              <li class="divider"></li>
+              <li><a href="index.php?module=products&view=categories">
+              List Categories              </a></li>
+            <li><a href="index.php?module=products&view=add_category">
+              Add Category              </a></li>
+          </ul>
+        </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Customers          <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.php?module=customers">
+              List Customers              </a></li>
+            <li><a href="index.php?module=customers&view=add">
+              Add Customer              </a></li>
+          </ul>
+        </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Sales          <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.php?module=sales">
+              List Sales              </a></li>
+            <li><a href="index.php?module=sales&view=holded">
+              List Opened Bills              </a></li>
+          </ul>
+        </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Reports          <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.php?module=reports&view=daily_sales">
+              Daily Sales              </a></li>
+            <li><a href="index.php?module=reports&view=monthly_sales">
+              Monthly Sales              </a></li>
+            <li><a href="index.php?module=reports">
+              Sales Reports              </a></li>
+              <li class="divider"></li>
+              <li><a href="index.php?module=reports&view=top">
+              Top Products              </a></li>
+              <li><a href="index.php?module=reports&view=products">
+              Products Reports              </a></li>
+          </ul>
+        </li> 
+        </ul>
+          
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container"><script>
+             $(document).ready(function() {
+                $('#fileData').dataTable( {
+					"aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    "aaSorting": [[ 0, "asc" ]],
+                    "iDisplayLength": 10,
+					"oTableTools": {
+						"sSwfPath": "assets/media/swf/copy_csv_xls_pdf.swf",
+						"aButtons": [
+								"csv",
+								"xls",
+								{
+									"sExtends": "pdf",
+									"sPdfOrientation": "landscape",
+									"sPdfMessage": ""
+								},
+								"print"
+						]
+					},
+					"oLanguage": {
+					  "sSearch": "Filter: "
+					},
+					"aoColumns": [ 
+					  null,
+					  null,
+	
+					  { "bSortable": false }
+					]
+                } );
+				
+            } );
+                    
+</script>
+        
+
+	<h3>Categories</h3>
+	<p class="introtext">Please use the table below to navigate or filter the results. You can download the table as csv, excel and pdf.</p>
+	
+	<table id="fileData" class="table table-striped table-bordered table-condensed table-hover" style="margin-bottom:5px;">
+		<thead>
+        <tr class="active">
+			<th style="width:55px;">No.</th>
+			<th>Name</th>
+			
+            <th style="width:45px;">Actions</th>
+		</tr>
+        </thead>
+		<tbody>
+					<tr>
+				<td>1</td>
+                <td>Fast Food</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=1" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=1" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>2</td>
+                <td>Tea Time</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=2" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=2" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>3</td>
+                <td>Dinner & Lunch</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=3" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=3" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>4</td>
+                <td>South Indian</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=4" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=4" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>5</td>
+                <td>Maharashtian Nashta</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=5" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=5" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>6</td>
+                <td>June</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=6" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=6" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>7</td>
+                <td>July</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=7" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=7" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>8</td>
+                <td>August</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=8" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=8" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>9</td>
+                <td>September</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=9" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=9" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>10</td>
+                <td>October</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=10" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=10" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>11</td>
+                <td>November</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=11" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=11" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>12</td>
+                <td>December</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=12" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=12" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>13</td>
+                <td>Services</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=13" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=13" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>14</td>
+                <td>fgdf</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=14" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=14" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>15</td>
+                <td>Stationry</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=15" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=15" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>16</td>
+                <td>Computer</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=16" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=16" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>17</td>
+                <td>Computer accessories</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=17" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=17" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>18</td>
+                <td>test</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=18" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=18" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>19</td>
+                <td>SCRIPTS</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=19" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=19" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>20</td>
+                <td>xdfsdf</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=20" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=20" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>21</td>
+                <td>HB collection</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=21" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=21" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>22</td>
+                <td>Parathas</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=22" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=22" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>23</td>
+                <td>Hello</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=30" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=30" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>24</td>
+                <td>Tenant</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=23" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=23" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>25</td>
+                <td>A. Tenant</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=24" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=24" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>26</td>
+                <td>Monthly</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=25" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=25" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>27</td>
+                <td>Mcdo</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=26" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=26" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>28</td>
+                <td>Mcdonalds</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=27" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=27" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>29</td>
+                <td>Komponen Sewa</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=28" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=28" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>30</td>
+                <td>Services</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=29" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=29" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>31</td>
+                <td>mama</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=31" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=31" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>32</td>
+                <td>weffe</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=32" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=32" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>33</td>
+                <td>Starter</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=33" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=33" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>34</td>
+                <td>Egynyári</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=34" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=34" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>35</td>
+                <td>teleision</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=35" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=35" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>36</td>
+                <td>123321</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=36" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=36" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>37</td>
+                <td>Keys</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=37" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=37" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>38</td>
+                <td>Màn hình</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=38" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=38" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>39</td>
+                <td>Laundry</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=39" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=39" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>40</td>
+                <td>oil</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=40" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=40" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>41</td>
+                <td>Lịch bloc</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=41" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=41" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>42</td>
+                <td>Sweeten</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=42" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=42" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>43</td>
+                <td>Pantalones</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=43" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=43" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>44</td>
+                <td>Cosmetics</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=44" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=44" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>45</td>
+                <td>Jeans</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=45" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=45" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>46</td>
+                <td>Jeans</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=46" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=46" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>47</td>
+                <td>Jeans</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=47" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=47" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>48</td>
+                <td>Jeans</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=48" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=48" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>49</td>
+                <td>website</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=49" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=49" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>50</td>
+                <td>تجريبي</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=50" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=50" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>51</td>
+                <td>COFFE</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=51" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=51" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>52</td>
+                <td>A- Category </td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=52" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=52" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>53</td>
+                <td>cigs</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=53" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=53" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>54</td>
+                <td>rabiul</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=54" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=54" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>55</td>
+                <td>dry</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=55" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=55" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>56</td>
+                <td>Pokemon</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=56" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=56" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>57</td>
+                <td>محمود</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=57" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=57" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>58</td>
+                <td>Gift Cards</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=58" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=58" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>59</td>
+                <td>sfsfsdafsaf</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=59" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=59" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>60</td>
+                <td>Repair </td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=60" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=60" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>61</td>
+                <td>VEG</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=61" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=61" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>62</td>
+                <td>Combo Offers</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=62" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=62" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>63</td>
+                <td>ice cream</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=63" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=63" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>64</td>
+                <td>loto</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=64" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=64" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>65</td>
+                <td>kjhkj</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=65" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=65" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>66</td>
+                <td>MASAGA</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=66" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=66" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>67</td>
+                <td>Bebidas</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=67" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=67" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>68</td>
+                <td>AA</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=68" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=68" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>69</td>
+                <td>shart</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=69" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=69" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>70</td>
+                <td>toy</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=70" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=70" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>71</td>
+                <td>Dinner</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=71" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=71" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>72</td>
+                <td>asas</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=72" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=72" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>73</td>
+                <td>OLI YAMALUB</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=73" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=73" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>74</td>
+                <td>OLI MESIN</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=74" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=74" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>75</td>
+                <td>Beverages</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=75" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=75" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>76</td>
+                <td>مواد غذایی</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=76" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=76" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>77</td>
+                <td>Petrol A 92</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=77" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=77" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>78</td>
+                <td>Petrol </td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=78" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=78" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>79</td>
+                <td>Flour</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=79" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=79" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>80</td>
+                <td>xxxx</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=80" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=80" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>81</td>
+                <td>kkk</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=81" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=81" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>82</td>
+                <td>Drinks</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=82" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=82" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>83</td>
+                <td>food</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=83" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=83" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>84</td>
+                <td>1453</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=84" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=84" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>85</td>
+                <td>drinks</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=85" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=85" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>86</td>
+                <td>drinks</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=86" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=86" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>87</td>
+                <td>KUZHINA</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=87" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=87" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>88</td>
+                <td>bud</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=88" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=88" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>89</td>
+                <td>lather shoo</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=89" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=89" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>90</td>
+                <td>hhhhh</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=90" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=90" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>91</td>
+                <td>Μικρογεύματα</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=91" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=91" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>92</td>
+                <td>Udpi Special</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=92" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=92" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>93</td>
+                <td>Tea Time</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=93" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=93" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>94</td>
+                <td>Dinner & lunch</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=94" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=94" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>95</td>
+                <td>TV MZ</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=96" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=96" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>96</td>
+                <td>Sweets</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=95" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=95" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>97</td>
+                <td>pen</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=97" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=97" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>98</td>
+                <td>pen</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=98" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=98" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>99</td>
+                <td>pen</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=99" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=99" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>100</td>
+                <td>pen</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=100" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=100" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>101</td>
+                <td>huseein</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=101" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=101" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>102</td>
+                <td>42342342342343</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=102" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=102" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>103</td>
+                <td>ccvvvv</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=103" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=103" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>104</td>
+                <td>pathanjali</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=104" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=104" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>105</td>
+                <td>spiderman</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=105" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=105" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+					<tr>
+				<td>106</td>
+                <td>aaa</td>
+                
+                <td><center><div class="btn-group"><a href="index.php?module=products&view=edit_category&id=106" class="tip btn btn-warning btn-xs" title="Update Category"><i class="glyphicon glyphicon-edit"></i></a> <a href="index.php?module=products&view=delete_category&id=106" onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title="<em>delete_category</em>"><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+			</tr>
+            
+		        </tbody>
+	</table>
+	
+	<p><a href="http://demo.tecdiary.my/spos/index.php?module=products&view=add_category" class="btn btn-primary btn-sm">Add New Category</a></p>
+	
+</div>
+</div>
+<div id="footer">
+  <div class="container">
+    <p class="credit">Copyright &copy; 2017 Simple POS v3.0 - Page rendered in 0.0173 seconds. 
+    <a href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title="Help"><i class="icon-question-sign"></i></a>
+    </p>   
+  </div>
+</div>
+<script type="text/javascript" src="http://demo.tecdiary.my/spos/assets/js/bootstrap.min.js"></script>
+<script src="http://demo.tecdiary.my/spos/assets/js/bootstrap-prettyfile.js"></script> 
+<script src="http://demo.tecdiary.my/spos/assets/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="http://demo.tecdiary.my/spos/assets/js/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" charset="utf-8" src="http://demo.tecdiary.my/spos/assets/media/js/ZeroClipboard.js"></script> 
+<script type="text/javascript" charset="utf-8" src="http://demo.tecdiary.my/spos/assets/media/js/TableTools.min.js"></script> 
+<script type="text/javascript" src="http://demo.tecdiary.my/spos/assets/js/DT_bootstrap.js"></script>
+   
+</body>
+</html>
