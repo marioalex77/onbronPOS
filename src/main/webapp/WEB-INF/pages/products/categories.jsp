@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <!--base href="http://demo.tecdiary.my/spos/" /-->
-<title>Categories | Onbron POS</title>
+<title>message: ${categoria.title}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="<c:url value='/resources/images/favicon.ico'/>" rel="shortcut icon"/>
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css'/>" type="text/css" charset="utf-8">

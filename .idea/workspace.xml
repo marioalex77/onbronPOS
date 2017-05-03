@@ -7,17 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a20d984-bdda-4c80-b692-1c2b040d5b68" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/footerPOS.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/dash.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/DT_bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/TableTools.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/ZeroClipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/bootstrap-datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/bootstrap-prettyfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/CategoriaController.java" afterPath="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/CategoriaController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/productos/categorias.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/productos/categorias.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -150,7 +141,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar!/javax/validation/constraints/Size.class" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/configuration/AppConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Imagen.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Impuesto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Producto.java" />
@@ -169,8 +159,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/footerPOS.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/productos/categorias.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/CategoriaController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages.properties" />
       </list>
     </option>
   </component>
@@ -275,9 +266,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -470,6 +459,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1011,7 +1002,8 @@
       <workItem from="1493735032075" duration="50000" />
       <workItem from="1493735648596" duration="12318000" />
       <workItem from="1493766562668" duration="1677000" />
-      <workItem from="1493822852131" duration="3972000" />
+      <workItem from="1493822852131" duration="4066000" />
+      <workItem from="1493848377420" duration="1411000" />
     </task>
     <task id="LOCAL-00001" summary="update 26042017 14:23">
       <created>1493238248578</created>
@@ -1111,11 +1103,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493768197614</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update 03/05/2017 10:00 am listCategories">
+      <created>1493828334746</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1493828334746</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59309000" />
+    <option name="totallyTimeSpent" value="60814000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1147,12 +1146,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20424837" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2124183" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21709532" sideWeight="0.50851583" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28668684" sideWeight="0.4914842" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28366113" sideWeight="0.4914842" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1209,7 +1208,8 @@
     <MESSAGE value="update 27/04/2017 04:59 pm Configuracion con clase" />
     <MESSAGE value="update 02/05/2017 12:10 pm" />
     <MESSAGE value="update 02/05/2017 2:00 pm paginasWeb y validaciones en POJOs" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 02/05/2017 2:00 pm paginasWeb y validaciones en POJOs" />
+    <MESSAGE value="update 03/05/2017 10:00 am listCategories" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 03/05/2017 10:00 am listCategories" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1343,13 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="91" lean-forward="false" selection-start-line="0" selection-start-column="91" selection-end-line="0" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Imagen.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1432,7 +1425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2635">
           <caret line="157" column="33" lean-forward="false" selection-start-line="157" selection-start-column="33" selection-end-line="157" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1440,7 +1432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
           <caret line="82" column="39" lean-forward="false" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1448,7 +1439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1456,9 +1446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17306">
           <caret line="1020" column="19" lean-forward="false" selection-start-line="1020" selection-start-column="19" selection-end-line="1020" selection-end-column="19" />
-          <folding>
-            <marker date="1493826656006" expanded="true" signature="13645:13651" ph="&amp;nbsp;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1466,7 +1453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6239">
           <caret line="367" column="2" lean-forward="false" selection-start-line="367" selection-start-column="2" selection-end-line="367" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1474,9 +1460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
           <caret line="79" column="67" lean-forward="false" selection-start-line="79" selection-start-column="67" selection-end-line="79" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1484,7 +1467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2533">
           <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1501,7 +1483,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="65" />
           <folding>
-            <element signature="e#303#309#0#HTML" expanded="true" />
+            <element signature="e#303#309#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1522,15 +1504,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="26" lean-forward="false" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="49" lean-forward="true" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
