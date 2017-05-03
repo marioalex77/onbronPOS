@@ -29,7 +29,7 @@
 
                 <td>${categoria.idCategoria}</td>
                 <td>${categoria.nombre}</td>
-                <td><a href="editEmployee?id=${categoria.idCategoria}">Edit</a>
+                <td><a href="/categoria/editar?idCategoria=${categoria.idCategoria}">Edit</a>
                     <a
                             href="deleteEmployee?id=${categoria.idCategoria}">Delete</a></td>
 

@@ -36,7 +36,7 @@ public class CategoriaController {
     public ModelAndView listaCategoria(ModelAndView model){
         List<Categoria> listaCategoria = categoriaService.buscarTodos();
         model.addObject("listaCategoria", listaCategoria);
-        model.setViewName("productos/categorias");
+        model.setViewName("product/categories");
         return model;
     }
 
