@@ -9,9 +9,9 @@
 <head>
 <meta charset="utf-8">
 <!--base href="http://demo.tecdiary.my/spos/" /-->
-<title><spring:message code="categories.title"/></title>
+<title><spring:message code="categories.title"/> | <spring:message code="application.name"/></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link href="<c:url value='/resources/images/favicon.ico'/>" rel="shortcut icon"/>
+<link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico'/>"/>
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrapPOS.css'/>" type="text/css" charset="utf-8">
 <link rel="stylesheet" href="<c:url value='/resources/css/datatables.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/resources/css/dash.css'/>" type="text/css">

@@ -5,10 +5,15 @@
   Time: 09:57 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <div id="footer">
     <div class="container">
-        <p class="credit">Copyright &copy; 2017 Simple POS v3.0 - Page rendered in 0.0173 seconds.
+        <p class="credit">Copyright &copy; 2017 <spring:message code="application.company"/> v0.1
             <a href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title="Help"><i class="icon-question-sign"></i></a>
         </p>
     </div>
