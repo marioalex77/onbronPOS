@@ -2,15 +2,17 @@
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <!--base href="http://demo.tecdiary.my/spos/" /-->
-<title>message: ${categoria.title}</title>
+<title><spring:message code="categories.title"/></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="<c:url value='/resources/images/favicon.ico'/>" rel="shortcut icon"/>
-<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css'/>" type="text/css" charset="utf-8">
+<link rel="stylesheet" href="<c:url value='/resources/css/bootstrapPOS.css'/>" type="text/css" charset="utf-8">
 <link rel="stylesheet" href="<c:url value='/resources/css/datatables.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/resources/css/dash.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/resources/css/non-responsive.css'/>" type="text/css">
@@ -27,15 +29,15 @@ $(document).ready(function() {
     <div id="wrap">
         <jsp:include page="../navbarPOS.jsp"/>
         <div class="container">
-            <h3>Categories</h3>
-            <p class="introtext">Please use the table below to navigate or filter the results. You can download the table as csv, excel and pdf.</p>
+            <h3><spring:message code="categories.container.title"/> - <spring:message code="application.name"/></h3>
+            <p class="introtext"><spring:message code="categories.container.introtext"/></p>
 
             <table id="fileData" class="table table-striped table-bordered table-condensed table-hover" style="margin-bottom:5px;">
                 <thead>
                     <tr class="active">
-                        <th style="width:55px;">No.</th>
-                        <th>Nombre</th>
-                        <th style="width:45px;">Actions</th>
+                        <th style="width:55px;"><spring:message code="categories.container.table.encabezado.no"/></th>
+                        <th><spring:message code="categories.container.table.encabezado.name"/></th>
+                        <th style="width:45px;"><spring:message code="categories.container.table.encabezado.actions"/></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,11 +61,11 @@ $(document).ready(function() {
                     </c:forEach>
                 </tbody>
             </table>
-            <p><a href="/categoria/agregar" class="btn btn-primary btn-sm">Add New Category</a></p>
+            <p><a href="/categoria/agregar" class="btn btn-primary btn-sm"><spring:message code="categories.container.button.value"/></a></p>
         </div>
         <jsp:include page="../footerPOS.jsp"/>
     </div>
-    <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/resources/js/bootstrapPOS.min.js'/>"></script>
     <script src="<c:url value='/resources/js/bootstrap-prettyfile.js'/>"></script>
     <script src="<c:url value='/resources/js/bootstrap-datepicker.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js'/>"></script>

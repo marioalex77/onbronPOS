@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +21,10 @@ import com.maguzman.onbron.service.CategoriaService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Locale;
+import org.springframework.context.i18n.LocaleContextHolder;
+
+
 
 @Controller
 public class CategoriaController {
@@ -36,7 +41,7 @@ public class CategoriaController {
     public ModelAndView listaCategoria(ModelAndView model){
         List<Categoria> listaCategoria = categoriaService.buscarTodos();
         model.addObject("listaCategoria", listaCategoria);
-        model.setViewName("product/categories");
+        model.setViewName("products/categories");
         return model;
     }
 
