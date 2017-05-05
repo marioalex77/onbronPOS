@@ -31,7 +31,7 @@ $(document).ready(function() {
         <div class="container">
             <h3><spring:message code="categories.container.title"/> - <spring:message code="application.name"/></h3>
             <p class="introtext"><spring:message code="categories.container.introtext"/></p>
-
+            <spring:url value="/categoria/agregar" var="agregarUrl" />
             <table id="fileData" class="table table-striped table-bordered table-condensed table-hover" style="margin-bottom:5px;">
                 <thead>
                     <tr class="active">
@@ -41,16 +41,20 @@ $(document).ready(function() {
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="categoria" items="${listaCategoria}">
+                    <c:forEach var="categoria" items="${categorias}">
                         <tr>
                         <td>${categoria.idCategoria}</td>
                         <td>${categoria.nombre}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="/categoria/editar?idCategoria=${categoria.idCategoria}" class="tip btn btn-warning btn-xs" title="Update Category">
+                                <spring:url value="/categoria/${categoria.idCategoria}" var="categoriaUrl" />
+                                <spring:url value="/categoria/${categoria.idCategoria}/borrar" var="borrarUrl" />
+                                <spring:url value="/categoria/${categoria.idCategoria}/editar" var="editarUrl" />
+
+                                <a href="${editarUrl}" class="tip btn btn-warning btn-xs" title="Update Category">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>
-                                <a href="/categoria/borrar?idCategoria=${categoria.idCategoria}"
+                                <a href="${borrarUrl}"
                                    onClick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')"
                                    class="tip btn btn-danger btn-xs" title="<em>delete_category</em>">
                                     <i class="glyphicon glyphicon-trash"></i>
@@ -61,7 +65,7 @@ $(document).ready(function() {
                     </c:forEach>
                 </tbody>
             </table>
-            <p><a href="/categoria/agregar" class="btn btn-primary btn-sm"><spring:message code="categories.container.button.value"/></a></p>
+            <p><a href="${agregarUrl}" class="btn btn-primary btn-sm"><spring:message code="categories.container.button.value"/></a></p>
         </div>
         <jsp:include page="../footerPOS.jsp"/>
     </div>

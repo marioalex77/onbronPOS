@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,24 +29,43 @@
     <body>
         <div id="wrap">
             <jsp:include page="../navbarPOS.jsp"/>
+            <spring:url value="/categoria" var="categoriaActionUrl" />
             <div class="container">
-                <h3>Add New Category</h3>
+                <c:choose>
+                    <c:when test="${categoria['new']}">
+                        <h3>Add New Category</h3>
+                    </c:when>
+                    <c:otherwise>
+                        <h3>Update Category</h3>
+                    </c:otherwise>
+                </c:choose>
+
                 <p>Please enter the information below.</p>
-                <form:form action="/categoria/guardar" method="POST" modelAttribute="categoria">
+                <form:form action="${categoriaActionUrl}" method="post" modelAttribute="categoria"
+                           accept-charset="utf-8" enctype="multipart/form-data">
                     <div style="display:none">
                         <form:input type="hidden" path="idCategoria" id="idCategoria"/>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="name" class="control-label">Name</label>
-                                <form:input path="nombre" id="nombre" class="form-control input-sm"/>
-                                <form:errors path="salary" cssClass="error"/>
-                                <div class="inline-help">Please enter the name of Category</div>
-                            </div>
+                            <spring:bind path="nombre">
+                                <div class="form-group">
+                                    <label for="nombre" class="control-label">Name</label>
+                                    <form:input path="nombre" id="nombre" type="text" class="form-control input-sm"/>
+                                    <form:errors path="nombre" cssClass="error"/>
+                                    <div class="inline-help">Please enter the name of Category</div>
+                                </div>
+                            </spring:bind>
                         </div>
                     </div>
-                    <input type="submit" name="submit" value="Add New Category" class="btn btn-primary btn-sm" />
+                    <c:choose>
+                        <c:when test="${categoria['new']}">
+                            <input type="submit" name="submit" value="Add New Category" class="btn btn-primary btn-sm"/>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="submit" name="submit" value="Update Category" class="btn btn-primary btn-sm" />
+                        </c:otherwise>
+                    </c:choose>
                 </form:form>
             </div>
             <jsp:include page="../footerPOS.jsp"/>

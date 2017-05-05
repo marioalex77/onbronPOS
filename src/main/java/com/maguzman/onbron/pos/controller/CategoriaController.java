@@ -6,9 +6,9 @@ package com.maguzman.onbron.pos.controller;
 
 import java.util.List;
 
-import org.jboss.logging.Logger;
+//import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
+//import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,13 +22,13 @@ import com.maguzman.onbron.service.CategoriaService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Locale;
-import org.springframework.context.i18n.LocaleContextHolder;
+//import org.springframework.context.i18n.LocaleContextHolder;
 
 
 
 @Controller
 public class CategoriaController {
-    private static final Logger logger = Logger.getLogger(CategoriaController.class);
+    //private static final Logger logger = Logger.getLogger(CategoriaController.class);
 
     public CategoriaController(){
         System.out.println("CategoriaController");
@@ -37,26 +37,32 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @RequestMapping(value = {"/posAdmin/categoria/list","/categoria/list","/"}, method = RequestMethod.GET)
-    public ModelAndView listaCategoria(ModelAndView model){
-        List<Categoria> listaCategoria = categoriaService.buscarTodos();
-        model.addObject("listaCategoria", listaCategoria);
+    //@Autowired
+    //private MessageSource messageSource;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(ModelAndView model) {
+        //logger.debug("index()");
+        return "redirect:/categoria";
+    }
+
+    //Listar Categorias
+    @RequestMapping(value = "/categoria", method = RequestMethod.GET)
+    public ModelAndView listarCategorias(ModelAndView model){
+        //logger.debug("listaCategorias()");
+        List<Categoria> listaCategorias= categoriaService.buscarTodos();
+        model.addObject("categorias", listaCategorias);
         model.setViewName("products/categories");
         return model;
     }
 
-    @RequestMapping(value = {"/posAdmin/categoria/agregar","/categoria/agregar"}, method = RequestMethod.GET)
-    public ModelAndView newContact(ModelAndView model) {
-        Categoria categoria = new Categoria();
-        model.addObject("categoria", categoria);
-        model.setViewName("AddCategories");
-        return model;
-    }
-
-    @RequestMapping(value = "/categoria/guardar", method = RequestMethod.POST)
-    public ModelAndView saveEmployee(@Valid @ModelAttribute Categoria categoria, BindingResult result) {
+    //Guardar o actualizar Usuario
+    @RequestMapping(value = "/categoria", method = RequestMethod.POST)
+    public ModelAndView guardarCategoria(@Valid @ModelAttribute Categoria categoria,
+                                               BindingResult result) {
+        //logger.debugf("guardarCategoria() : {}", categoria);
         if(result.hasErrors()){
-            ModelAndView model =  new ModelAndView("AddCategories");
+            ModelAndView model =  new ModelAndView("/products/add_categorie");
             model.addObject("categoria", categoria);
             return model;
         }
@@ -67,23 +73,58 @@ public class CategoriaController {
             } else {
                 categoriaService.actualizar(categoria);
             }
-            return new ModelAndView("redirect:/categoria/list");
+            return new ModelAndView("redirect:/categoria");
         }
     }
 
-    @RequestMapping(value = "/categoria/borrar", method = RequestMethod.GET)
-    public ModelAndView deleteEmployee(HttpServletRequest request) {
-        int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
-        categoriaService.borrar(categoriaId);
-        return new ModelAndView("redirect:/categoria/list");
+    //Mostrar formulario agregar categoria
+    @RequestMapping(value = "/categoria/agregar", method = RequestMethod.GET)
+    public ModelAndView mostrarFormulario(ModelAndView model) {
+        //logger.debug("mostrarFormularioCategoria()");
+        Categoria categoria = new Categoria();
+        model.addObject("categoria", categoria);
+        model.setViewName("/products/add_categorie");
+        return model;
     }
 
-    @RequestMapping(value = "/categoria/editar", method = RequestMethod.GET)
-    public ModelAndView editContact(HttpServletRequest request) {
+    //borrar categoria
+    @RequestMapping(value = "/categoria/{idCategoria}/borrar", method = RequestMethod.GET)
+    public ModelAndView borrarCategoria(HttpServletRequest request) {
+        int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
+        //logger.debugf("borrarCategoria()",categoriaId);
+        categoriaService.borrar(categoriaId);
+        return new ModelAndView("redirect:/categoria");
+    }
+
+    //editar categoria
+    @RequestMapping(value = "/categoria/{idCategoria}/editar", method = RequestMethod.GET)
+    public ModelAndView editarCategoria(HttpServletRequest request) {
         int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
         Categoria categoria = categoriaService.buscarPorClave(categoriaId);
-        ModelAndView model = new ModelAndView("AddCategories");
+        //logger.debugf("editarCategoria()",categoria);
+        ModelAndView model = new ModelAndView("/products/add_categorie");
         model.addObject("categoria", categoria);
+        return model;
+    }
+
+    //mostrar categoria
+    @RequestMapping(value = "/categoria/{idCategoria}", method = RequestMethod.GET)
+    public ModelAndView mostrarCategoria(HttpServletRequest request, Locale locale){
+        int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
+        Categoria categoria = categoriaService.buscarPorClave(categoriaId);
+        //logger.debugf("mostrarCategoria()",categoria);
+        ModelAndView model = new ModelAndView("/products/show_categorie");
+        model.addObject("categoria", categoria);
+        /*if (categoria==null) {
+            String errorNotFound = messageSource.getMessage(
+                    "add_categorie.error.notfound",
+                    new Object[]{"Categoria no encontrada"},
+                    locale);
+            // obtain locale from LocaleContextHolder
+            Locale currentLocale = LocaleContextHolder.getLocale();
+            model.addObject("locale", currentLocale);
+            model.addObject("message",errorNotFound);
+        }*/
         return model;
     }
 }
