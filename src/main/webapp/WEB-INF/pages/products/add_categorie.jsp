@@ -10,7 +10,15 @@
     <head>
         <meta charset="utf-8">
         <!--<base href="http://demo.tecdiary.my/spos/" />-->
-        <title>Add New Category | <spring:message code="application.name"/></title>
+        <c:choose>
+            <c:when test="${categoria.idCategoria == 0}">
+                <title><spring:message code="add_categorie.title"/> | <spring:message code="application.name"/></title>
+            </c:when>
+            <c:otherwise>
+                <title><spring:message code="edit_categorie.title"/> | <spring:message code="application.name"/></title>
+            </c:otherwise>
+        </c:choose>
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico'/>"/>
         <link rel="stylesheet" href="<c:url value='/resources/css/bootstrapPOS.css'/>" type="text/css" charset="utf-8">
@@ -32,38 +40,35 @@
             <spring:url value="/categoria" var="categoriaActionUrl" />
             <div class="container">
                 <c:choose>
-                    <c:when test="${categoria['new']}">
-                        <h3>Add New Category</h3>
+                    <c:when test="${categoria.idCategoria == 0}">
+                        <h3><spring:message code="add_categorie.container.title"/></h3>
                     </c:when>
                     <c:otherwise>
-                        <h3>Update Category</h3>
+                        <h3><spring:message code="edit_categorie.container.title"/></h3>
                     </c:otherwise>
                 </c:choose>
 
-                <p>Please enter the information below.</p>
-                <form:form action="${categoriaActionUrl}" method="post" modelAttribute="categoria"
-                           accept-charset="utf-8" enctype="multipart/form-data">
+                <p><spring:message code="add_categorie.introtext"/></p>
+                <form:form action="${categoriaActionUrl}" method="POST" modelAttribute="categoria">
                     <div style="display:none">
-                        <form:input type="hidden" path="idCategoria" id="idCategoria"/>
+                        <form:input type="hidden" path="idCategoria"/>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <spring:bind path="nombre">
-                                <div class="form-group">
-                                    <label for="nombre" class="control-label">Name</label>
-                                    <form:input path="nombre" id="nombre" type="text" class="form-control input-sm"/>
-                                    <form:errors path="nombre" cssClass="error"/>
-                                    <div class="inline-help">Please enter the name of Category</div>
-                                </div>
-                            </spring:bind>
+                            <div class="form-group">
+                                <label for="nombre" class="control-label"><spring:message code="label.categoria.nombre"/></label>
+                                <form:input path="nombre" id="nombre" class="form-control input-sm"/>
+                                <form:errors path="nombre" cssClass="error"/>
+                                <div class="inline-help"><spring:message code="inlinehelp.categoria.nombre"/></div>
+                            </div>
                         </div>
                     </div>
                     <c:choose>
-                        <c:when test="${categoria['new']}">
-                            <input type="submit" name="submit" value="Add New Category" class="btn btn-primary btn-sm"/>
+                        <c:when test="${categoria.idCategoria == 0}">
+                            <input type="submit" name="submit" value="<spring:message code='add_categorie.submit'/>" class="btn btn-primary btn-sm"/>
                         </c:when>
                         <c:otherwise>
-                            <input type="submit" name="submit" value="Update Category" class="btn btn-primary btn-sm" />
+                            <input type="submit" name="submit" value="<spring:message code='edit_categorie.submit'/>" class="btn btn-primary btn-sm" />
                         </c:otherwise>
                     </c:choose>
                 </form:form>

@@ -22,8 +22,8 @@ public class CategoriaServiceImpl implements CategoriaService{
 
     @Override
     @Transactional
-    public Categoria buscarPorClave(Integer id){
-        return categoriaDAO.buscarPorClave(id);
+    public Categoria buscarPorClave(Integer idCategoria){
+        return categoriaDAO.buscarPorClave(idCategoria);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class CategoriaServiceImpl implements CategoriaService{
 
     @Override
     @Transactional
-    public void borrar(Integer id){
-        categoriaDAO.borrar(id);
+    public void borrar(Integer idCategoria){
+        categoriaDAO.borrar(idCategoria);
     }
     @Override
     @Transactional

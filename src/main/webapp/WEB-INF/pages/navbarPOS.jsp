@@ -8,6 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<spring:url value="/categoria/agregar" var="agregarCategoria" />
+<spring:url value="/categoria" var="listarCategoria" />
 <div class="navbar navbar-static-top navbar-inverse">
     <div class="container">
         <div class="navbar-header">
@@ -36,8 +38,8 @@
                             </a>
                         </li>
                     </ul>
-                </li>
                 <li>
+                </li>
                     <a href="http://demo.tecdiary.my/spos/index.php?module=settings" class="tip" data-placement="right" title="Home">
                         <i class="glyphicon glyphicon-home"></i>
                     </a>
@@ -73,12 +75,12 @@
                         <ul class="dropdown-menu">
                             <li><a href="index.php?module=products">List Products </a></li>
                             <li><a href="index.php?module=products&view=add">Add Product</a></li>
-                            <li><a href="index.php?module=products&view=import">Import by CSV</a></li>
-                            <li><a href="index.php?module=products&view=sheet">Print Barcode</a></li>
-                            <li><a href="index.php?module=products&view=labels">Print Lablels</a></li>
+                            <!--li><a href="index.php?module=products&view=import">Import by CSV</a></li-->
+                            <!--li><a href="index.php?module=products&view=sheet">Print Barcode</a></li-->
+                            <!--li><a href="index.php?module=products&view=labels">Print Lablels</a></li-->
                             <li class="divider"></li>
-                            <li><a href="/categoria/list"><spring:message code="application.menu.products.listcategories"/></a></li>
-                            <li><a href="index.php?module=products&view=add_category"> Add Category </a></li>
+                            <li><a href="${listarCategoria}"><spring:message code="application.menu.products.listcategories"/></a></li>
+                            <li><a href="${agregarCategoria}"><spring:message code="application.menu.products.addcategories"/></a></li>
                         </ul>
                     </li>
                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<b class="caret"></b></a>

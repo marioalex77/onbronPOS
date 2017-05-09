@@ -6,7 +6,7 @@ package com.maguzman.onbron.pos.controller;
 
 import java.util.List;
 
-//import org.jboss.logging.Logger;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ import java.util.Locale;
 
 @Controller
 public class CategoriaController {
-    //private static final Logger logger = Logger.getLogger(CategoriaController.class);
+    private static final Logger logger = Logger.getLogger(CategoriaController.class);
 
     public CategoriaController(){
         System.out.println("CategoriaController");
@@ -58,9 +58,9 @@ public class CategoriaController {
 
     //Guardar o actualizar Usuario
     @RequestMapping(value = "/categoria", method = RequestMethod.POST)
-    public ModelAndView guardarCategoria(@Valid @ModelAttribute Categoria categoria,
+    public ModelAndView guardarCategoria(@Valid @ModelAttribute("categoria") Categoria categoria,
                                                BindingResult result) {
-        //logger.debugf("guardarCategoria() : {}", categoria);
+        logger.debugf("guardarCategoria() : {}", categoria);
         if(result.hasErrors()){
             ModelAndView model =  new ModelAndView("/products/add_categorie");
             model.addObject("categoria", categoria);
@@ -88,7 +88,7 @@ public class CategoriaController {
     }
 
     //borrar categoria
-    @RequestMapping(value = "/categoria/{idCategoria}/borrar", method = RequestMethod.GET)
+    @RequestMapping(value = "/categoria/borrar", method = RequestMethod.GET)
     public ModelAndView borrarCategoria(HttpServletRequest request) {
         int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
         //logger.debugf("borrarCategoria()",categoriaId);
@@ -97,7 +97,7 @@ public class CategoriaController {
     }
 
     //editar categoria
-    @RequestMapping(value = "/categoria/{idCategoria}/editar", method = RequestMethod.GET)
+    @RequestMapping(value = "/categoria/editar", method = RequestMethod.GET)
     public ModelAndView editarCategoria(HttpServletRequest request) {
         int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
         Categoria categoria = categoriaService.buscarPorClave(categoriaId);
@@ -108,7 +108,7 @@ public class CategoriaController {
     }
 
     //mostrar categoria
-    @RequestMapping(value = "/categoria/{idCategoria}", method = RequestMethod.GET)
+    @RequestMapping(value = "/categoria/mostrar", method = RequestMethod.GET)
     public ModelAndView mostrarCategoria(HttpServletRequest request, Locale locale){
         int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
         Categoria categoria = categoriaService.buscarPorClave(categoriaId);

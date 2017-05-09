@@ -22,8 +22,8 @@ public class CategoriaDAOImpl implements CategoriaDAO {
     }
 
     @Override
-    public Categoria buscarPorClave(int id) {
-        return (Categoria) getSession().get(Categoria.class, id);
+    public Categoria buscarPorClave(int idCategoria) {
+        return (Categoria) getSession().get(Categoria.class, idCategoria);
     }
 
     @Override
