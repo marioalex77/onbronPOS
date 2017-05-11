@@ -54,16 +54,16 @@ public class Usuario implements Serializable {
     private String genero;
 
     @NotEmpty
-    @Size(min=1,max = 1)
-    @Column(name="habilitado")
-    private String habilitado;
+    @Size(min=3,max = 30)
+    @Column(name="estado")
+    private String estado = Estado.ACTIVO.getEstado();
 
     @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="usuariorolusuario",
             joinColumns = {@JoinColumn(name="idUsuario")},
             inverseJoinColumns = {@JoinColumn(name="idRolUsuario")})
-    private Set<RolUsuario> rolUsuario = new HashSet<RolUsuario>();
+        private Set<RolUsuario> rolUsuario = new HashSet<RolUsuario>();
 
     public Usuario() {
         this.idUsuario = 0;
@@ -73,14 +73,14 @@ public class Usuario implements Serializable {
         this.primerApellido = "";
         this.segundoApellido = "";
         this.genero = "";
-        this.habilitado = "";
+        this.estado = "ACTIVO";
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -132,12 +132,12 @@ public class Usuario implements Serializable {
         this.genero = genero;
     }
 
-    public String getHabilitado() {
-        return habilitado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setHabilitado(String habilitado) {
-        this.habilitado = habilitado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Set<RolUsuario> getRolUsuario() {
@@ -189,7 +189,7 @@ public class Usuario implements Serializable {
                 ", primerApellido='" + primerApellido + '\'' +
                 ", segundoApellido='" + segundoApellido + '\'' +
                 ", genero='" + genero + '\'' +
-                ", habilitado='" + habilitado + '\'' +
+                ", estado='" + estado + '\'' +
                 ", rolUsuario=" + rolUsuario +
                 '}';
     }

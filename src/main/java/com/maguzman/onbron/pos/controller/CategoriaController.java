@@ -40,11 +40,11 @@ public class CategoriaController {
     //@Autowired
     //private MessageSource messageSource;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelAndView model) {
         //logger.debug("index()");
         return "redirect:/categoria";
-    }
+    }*/
 
     //Listar Categorias
     @RequestMapping(value = "/categoria", method = RequestMethod.GET)

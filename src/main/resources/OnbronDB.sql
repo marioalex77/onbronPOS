@@ -10,7 +10,7 @@ CREATE TABLE `usuario` (
   `primerApellido` varchar(45) NOT NULL,
   `segundoApellido` varchar(45) DEFAULT NULL,
   `genero` varchar(1) NOT NULL,
-  `habilitado` varchar(1) NOT NULL,
+  `estado` varchar(30) NOT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23,7 +23,7 @@ PRIMARY KEY (`idRolUsuario`)
 
 /* Populate USER_PROFILE Table */
 INSERT INTO rolusuario(tipo)
-VALUES ('USER');
+VALUES ('USUARIO');
 INSERT INTO rolusuario(tipo)
 VALUES ('ADMIN');
 INSERT INTO rolusuario(tipo)

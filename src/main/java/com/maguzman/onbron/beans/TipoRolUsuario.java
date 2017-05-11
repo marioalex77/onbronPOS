@@ -4,7 +4,7 @@ package com.maguzman.onbron.beans;
  * Created by maguzman on 09/05/2017.
  */
 public enum TipoRolUsuario {
-    USER("USER"),
+    USUARIO("USUARIO"),
     ADMIN("ADMIN"),
     SUPER("SUPER");
 
@@ -16,5 +16,14 @@ public enum TipoRolUsuario {
 
     public String getTipoRolUsuario() {
         return tipoRolUsuario;
+    }
+
+    public String getName(){
+        return this.name();
+    }
+
+    @Override
+    public String toString() {
+        return this.tipoRolUsuario;
     }
 }

@@ -20,7 +20,7 @@ public class RolUsuario implements Serializable {
     private Integer idRolUsuario;
     @NotEmpty
     @Column(name="tipo")
-    private String tipo = TipoRolUsuario.USER.getTipoRolUsuario();
+    private String tipo = TipoRolUsuario.USUARIO.getTipoRolUsuario();
 
     public Integer getIdRolUsuario() {
         return idRolUsuario;
