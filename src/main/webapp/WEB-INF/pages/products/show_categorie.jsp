@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <div class="control-label"><spring:message code="label.categoria.idCategoria"/></div>
+                    <div class="control-label"><b><spring:message code="label.categoria.idCategoria"/></b></div>
                     <div class="control-label">${categoria.idCategoria}</div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <div class="control-label"><spring:message code="label.categoria.nombre"/></div>
+                    <div class="control-label"><b><spring:message code="label.categoria.nombre"/></b></div>
                     <div class="control-label">${categoria.nombre}</div>
                 </div>
             </div>
