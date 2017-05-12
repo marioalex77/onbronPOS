@@ -4,11 +4,14 @@ package com.maguzman.onbron.configuration;
  * Created by maguzman on 28/04/2017.
  */
 
+import com.maguzman.onbron.converter.RoleToUserProfileConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -16,10 +19,15 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import java.util.Locale;
 
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.maguzman.onbron")
 public class AppConfig extends WebMvcConfigurerAdapter {
+
+    @SuppressWarnings("SpringJavaAutowiringInspection")
+    @Autowired
+    private RoleToUserProfileConverter roleToUserProfileConverter;
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -65,12 +73,23 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(localeInterceptor());
     }
 
+
+    /**
+     * Configure Converter to be used.
+     * In our example, we need a converter to convert string values[Roles] to UserProfiles in newUser.jsp
+     */
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(roleToUserProfileConverter);
+    }
+
+
     /**Optional. It's only required when handling '.' in @PathVariables w   hich otherwise ignore everything after last '.' in @PathVaidables argument.
      * It's a known bug in Spring [https://jira.spring.io/browse/SPR-6164], still present in Spring 4.1.7.
      * This is a workaround for this issue.
      */
-   /* @Override
+    @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
-    }*/
+    }
 }

@@ -11,7 +11,8 @@ CREATE TABLE `usuario` (
   `segundoApellido` varchar(45) DEFAULT NULL,
   `genero` varchar(1) NOT NULL,
   `estado` varchar(30) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
+  PRIMARY KEY (`idUsuario`),
+  UNIQUE KEY `correo_UNIQUE` (`correo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `rolusuario`;
@@ -36,8 +37,8 @@ CREATE TABLE `usuariorolusuario` (
   `idRolUsuario` int(11) unsigned NOT NULL,
   PRIMARY KEY (`idUsuario`,`idRolUsuario`),
   KEY `FK_RolUsuario_idx` (`idRolUsuario`),
-  CONSTRAINT `FK_RolUsuario` FOREIGN KEY (`idRolUsuario`) REFERENCES `rolusuario` (`idRolUsuario`) ON UPDATE CASCADE,
-  CONSTRAINT `FK_Usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON UPDATE CASCADE
+  CONSTRAINT `FK_Usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON UPDATE CASCADE,
+  CONSTRAINT `FK_RolUsuario` FOREIGN KEY (`idRolUsuario`) REFERENCES `rolusuario` (`idRolUsuario`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `categoria`;
@@ -46,3 +47,14 @@ CREATE TABLE `categoria` (
 `nombre` varchar(255) NOT NULL,
 PRIMARY KEY (`idCategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `persistentlogins`;
+CREATE TABLE `persistentlogins` (
+  `correo` varchar(255) NOT NULL,
+  `series` VARCHAR(64) NOT NULL,
+  `token` VARCHAR(64) NOT NULL,
+  `ultimoIngreso` TIMESTAMP NOT NULL,
+  PRIMARY KEY (series)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+

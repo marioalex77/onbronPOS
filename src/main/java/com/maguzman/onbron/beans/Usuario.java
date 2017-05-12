@@ -30,7 +30,6 @@ public class Usuario implements Serializable {
     private String correo;
 
     @NotEmpty
-    @Size(min=3, max=255)
     @Column(name="password")
     private String password;
 
@@ -44,12 +43,10 @@ public class Usuario implements Serializable {
     @Column(name="primerApellido")
     private String primerApellido;
 
-    @Size(min=3, max=45)
     @Column(name="segundoApellido")
     private String segundoApellido;
 
     @NotEmpty
-    @Size(min=1,max = 1)
     @Column(name="genero")
     private String genero;
 
