@@ -42,7 +42,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario usuario = buscarPorCorreo(correo);
         return (usuario==null||((idUsuario!=null)&&(usuario.getIdUsuario()==idUsuario)));
     }
-    public boolean confirmaPassword(String password, String repassword){
-        return (password!=null&&(password.equals(repassword)));
+    public boolean confirmaPassword(Usuario usuario){
+        return (usuario.getPassword()!=null&&(usuario.getPassword().equals(usuario.getRePassword())));
     }
 }

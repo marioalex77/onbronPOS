@@ -61,14 +61,14 @@
                     <div class="panel-body" style="padding-bottom:0;">
                         <form:form action="${actionUrl}" method="POST" modelAttribute="usuario" class="separate-sections">
                             <div style="display:none">
-                                <form:input type="hidden" path="id" id="id"/>
+                                <form:input type="hidden" path="idUsuario" id="idUsuario"/>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </span>
                                 <spring:message code='label.signUp.email' var="correoExample"/>
-                                <form:input path="correo" id="nombre" class="form-control input-sm"
+                                <form:input path="correo" id="nombre" class="form-control"
                                             placeholder="${correoExample}"/>
                                 <div class="has-error">
                                     <form:errors path="correo" cssClass="error"/>
@@ -79,7 +79,7 @@
                                     <i class="glyphicon glyphicon-lock"></i>
                                 </span>
                                 <spring:message code='label.signUp.password' var="passwordExample"/>
-                                <form:input type="password" path="password" id="nombre" class="form-control input-sm"
+                                <form:input type="password" path="password" id="nombre" class="form-control"
                                             placeholder="${passwordExample}"/>
                                 <div class="has-error">
                                     <form:errors path="password" cssClass="error"/>
@@ -89,10 +89,11 @@
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-lock"></i>
                                         </span>
-                                <input type="password" name="repassword" class="form-control"
-                                       placeholder="<spring:message code='label.signUp.repassword'/>" />
+                                <spring:message code='label.signUp.repassword' var="rePasswordExample"/>
+                                <form:input type="password" path="rePassword" id="rePassword" class="form-control"
+                                       placeholder="${rePasswordExample}" />
                                 <div class="has-error">
-                                    <!--desplegar error-->
+                                    <form:errors path="rePassword" cssClass="error"/>
                                 </div>
                             </div>
                             <div class="input-group">
@@ -100,7 +101,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
                                 <spring:message code='label.signUp.nombres' var="nombresExample"/>
-                                <form:input path="nombres" id="nombres" class="form-control input-sm"
+                                <form:input path="nombres" id="nombres" class="form-control"
                                             placeholder="${nombresExample}"/>
                                 <div class="has-error">
                                     <form:errors path="password" cssClass="error"/>
@@ -111,7 +112,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
                                 <spring:message code='label.signUp.primerApellido' var="papellidoexample"/>
-                                <form:input path="primerApellido" id="primerApellido" class="form-control input-sm"
+                                <form:input path="primerApellido" id="primerApellido" class="form-control"
                                             placeholder="${papellidoexample}"/>
                                 <div class="has-error">
                                     <form:errors path="primerApellido" cssClass="error"/>
@@ -122,18 +123,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
                                 <spring:message code='label.signUp.segundoApellido' var="sapellidoexample"/>
-                                <form:input path="segundoApellido" id="segundoApellido" class="form-control input-sm"
-                                            placeholder="${sapellidoexample}"/>
-                                <div class="has-error">
-                                    <form:errors path="segundoApellido" cssClass="error"/>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                </span>
-                                <spring:message code='label.signUp.segundoApellido' var="sapellidoexample"/>
-                                <form:input path="segundoApellido" id="segundoApellido" class="form-control input-sm"
+                                <form:input path="segundoApellido" id="segundoApellido" class="form-control"
                                             placeholder="${sapellidoexample}"/>
                                 <div class="has-error">
                                     <form:errors path="segundoApellido" cssClass="error"/>
@@ -145,12 +135,13 @@
                                 </span>
                                 <spring:message code='label.signUp.genero' var="generoexample"/>
                                 <form:select path="genero" items="${generos}" id="genero" multiple="false"
-                                             class="form-control input-sm" placeholder="${generoexample}"/>
+                                             class="form-control" placeholder="${generoexample}"/>
                                 <div class="has-error">
                                     <form:errors path="genero" cssClass="error"/>
                                 </div>
                             </div>
                             <div style="display:none">
+                                <form:input type="hidden" path="estado" id="estado" value="ACTIVO"/>
                                 <form:input type="hidden" path="rolUsuario" id="rolUsuario" value="SUPER"/>
                             </div>
                             <div class="row">

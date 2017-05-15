@@ -4,13 +4,14 @@ import com.maguzman.onbron.beans.RolUsuario;
 import com.maguzman.onbron.beans.Usuario;
 import com.maguzman.onbron.service.RolUsuarioService;
 import com.maguzman.onbron.service.UsuarioService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,7 @@ import javax.validation.Valid;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+
 
 /**
  * Created by maguzman on 11/05/2017.
@@ -45,6 +47,8 @@ public class OnbronSecurityController {
 
     @Autowired
     AuthenticationTrustResolver authenticationTrustResolver;
+
+    private static final Logger logger = LogManager.getLogger(OnbronSecurityController.class);
 
     @RequestMapping(value ={"/","/home"}, method = RequestMethod.GET)
     public ModelAndView homePage(ModelAndView model){
@@ -185,7 +189,8 @@ public class OnbronSecurityController {
      */
     @RequestMapping(value = "/registrarse", method = RequestMethod.POST)
     public ModelAndView guardarRegistroUsuario(@ModelAttribute("usuario") @Valid Usuario usuario,
-                                       BindingResult result, ModelAndView model, @RequestAttribute("repassword") String repassword){
+                                       BindingResult result, ModelAndView model){
+        logger.debug(usuario.toString());
         if(result.hasErrors()){
             model.setViewName("/auth/signUp");
             return model;
@@ -196,8 +201,8 @@ public class OnbronSecurityController {
             model.setViewName("/auth/signUp");
             return model;
         }
-        if(!usuarioService.confirmaPassword(usuario.getPassword(),repassword)){
-            FieldError repasswordError = new FieldError("usuario", "repassword",
+        if(!usuarioService.confirmaPassword(usuario)){
+            FieldError repasswordError = new FieldError("usuario", "rePassword",
                     messageSource.getMessage("non.confirm.password",new String[]{usuario.getCorreo()},Locale.getDefault()));
             model.setViewName("/auth/signUP");
             return model;

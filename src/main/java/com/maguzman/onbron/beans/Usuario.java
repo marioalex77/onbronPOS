@@ -23,23 +23,27 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @Email
-    @NotEmpty
-    @Size(min=3, max=255)
+    @Email//(message = "debe digitar un correo")
+    @NotEmpty//(message = "Correo no puede ser vacio")
+    @Size(min=3, max=255)//,message = "Correo tamaño debe ser mayor a 3")
     @Column(name="correo")
     private String correo;
 
-    @NotEmpty
+    @NotEmpty//(message = "Password no puede ser vacio")
     @Column(name="password")
     private String password;
 
-    @NotEmpty
-    @Size(min=3, max=100)
+    @Transient
+    @NotEmpty//(message = "Confirme Password no puede ser vacio")
+    private String rePassword;
+
+    @NotEmpty//(message = "Nombres no puede ser vacio")
+    @Size(min=3, max=100)//, message = "Tamaño nombres debe ser mayor a 3")
     @Column(name="nombres")
     private String nombres;
 
-    @NotEmpty
-    @Size(min=3, max=45)
+    @NotEmpty//(message = "Apellido no puede ser vacio")
+    @Size(min=3, max=45)//, message = "Tamaño apellido debe ser mayor a 3")
     @Column(name="primerApellido")
     private String primerApellido;
 
@@ -69,7 +73,7 @@ public class Usuario implements Serializable {
         this.nombres = "";
         this.primerApellido = "";
         this.segundoApellido = "";
-        this.genero = "";
+        this.genero = "M";
         this.estado = "ACTIVO";
     }
 
@@ -95,6 +99,14 @@ public class Usuario implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
     }
 
     public String getNombres() {

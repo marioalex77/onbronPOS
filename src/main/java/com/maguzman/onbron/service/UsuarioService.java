@@ -16,5 +16,5 @@ public interface UsuarioService {
     void borrarPorCorreo(String correo);
     Usuario actualizar(Usuario usuario);
     boolean esCorreoUnico(Integer idUsuario, String correo);
-    boolean confirmaPassword(String password, String repassword);
+    boolean confirmaPassword(Usuario usuario);
 }
