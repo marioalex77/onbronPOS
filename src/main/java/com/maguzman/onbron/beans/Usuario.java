@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
 
     @NotEmpty
     @Column(name="genero")
-    private String genero;
+    private String genero = Genero.MASCULINO.getGenero();
 
     @NotEmpty
     @Size(min=3,max = 30)

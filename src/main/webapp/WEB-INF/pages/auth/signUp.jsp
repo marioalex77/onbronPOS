@@ -56,63 +56,115 @@
             <div class="padded" style="text-align:center;margin-top: 40px;">
                 <img src="<c:url value='/resources/images/logo.png'/>" alt="Mario's Bistro POS"/>
                 <div class="panel panel-warning" style="margin-top: 20px;">
-                    <div class="panel-heading"><spring:message code='signUp.container.title'/></div>
+                    <div class="panel-heading"><h3><spring:message code='signUp.container.title'/></h3>
+                    <h4><spring:message code="signUP.container.subtitle"/></h4></div>
                     <div class="panel-body" style="padding-bottom:0;">
-                        <form action="${actionUrl}" method="post" accept-charset="utf-8" class="separate-sections">
+                        <form:form action="${actionUrl}" method="POST" modelAttribute="usuario" class="separate-sections">
+                            <div style="display:none">
+                                <form:input type="hidden" path="id" id="id"/>
+                            </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </span>
-                                <input type="email" name="correo" class="form-control" placeholder="Email" />
+                                <spring:message code='label.signUp.email' var="correoExample"/>
+                                <form:input path="correo" id="nombre" class="form-control input-sm"
+                                            placeholder="${correoExample}"/>
+                                <div class="has-error">
+                                    <form:errors path="correo" cssClass="error"/>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                                <spring:message code='label.signUp.password' var="passwordExample"/>
+                                <form:input type="password" path="password" id="nombre" class="form-control input-sm"
+                                            placeholder="${passwordExample}"/>
+                                <div class="has-error">
+                                    <form:errors path="password" cssClass="error"/>
+                                </div>
                             </div>
                             <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-lock"></i>
                                         </span>
-                                <input type="password" name="password" class="form-control" placeholder="Password" />
+                                <input type="password" name="repassword" class="form-control"
+                                       placeholder="<spring:message code='label.signUp.repassword'/>" />
+                                <div class="has-error">
+                                    <!--desplegar error-->
+                                </div>
                             </div>
                             <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-lock"></i>
-                                        </span>
-                                <input type="password" name="confirmpassword" class="form-control" placeholder="ConfirmPassword" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                <spring:message code='label.signUp.nombres' var="nombresExample"/>
+                                <form:input path="nombres" id="nombres" class="form-control input-sm"
+                                            placeholder="${nombresExample}"/>
+                                <div class="has-error">
+                                    <form:errors path="password" cssClass="error"/>
+                                </div>
                             </div>
                             <div class="input-group">
-                                 <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                 </span>
-                                <input type="email" name="correo" class="form-control" placeholder="Nombres" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                <spring:message code='label.signUp.primerApellido' var="papellidoexample"/>
+                                <form:input path="primerApellido" id="primerApellido" class="form-control input-sm"
+                                            placeholder="${papellidoexample}"/>
+                                <div class="has-error">
+                                    <form:errors path="primerApellido" cssClass="error"/>
+                                </div>
                             </div>
                             <div class="input-group">
-                                 <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                 </span>
-                                <input type="email" name="correo" class="form-control" placeholder="Primer Apellido" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                <spring:message code='label.signUp.segundoApellido' var="sapellidoexample"/>
+                                <form:input path="segundoApellido" id="segundoApellido" class="form-control input-sm"
+                                            placeholder="${sapellidoexample}"/>
+                                <div class="has-error">
+                                    <form:errors path="segundoApellido" cssClass="error"/>
+                                </div>
                             </div>
                             <div class="input-group">
-                                 <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                 </span>
-                                <input type="email" name="correo" class="form-control" placeholder="Segundo Apellido" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                <spring:message code='label.signUp.segundoApellido' var="sapellidoexample"/>
+                                <form:input path="segundoApellido" id="segundoApellido" class="form-control input-sm"
+                                            placeholder="${sapellidoexample}"/>
+                                <div class="has-error">
+                                    <form:errors path="segundoApellido" cssClass="error"/>
+                                </div>
                             </div>
                             <div class="input-group">
-                                 <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                 </span>
-                                <input type="email" name="correo" class="form-control" placeholder="Genero" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                <spring:message code='label.signUp.genero' var="generoexample"/>
+                                <form:select path="genero" items="${generos}" id="genero" multiple="false"
+                                             class="form-control input-sm" placeholder="${generoexample}"/>
+                                <div class="has-error">
+                                    <form:errors path="genero" cssClass="error"/>
+                                </div>
+                            </div>
+                            <div style="display:none">
+                                <form:input type="hidden" path="rolUsuario" id="rolUsuario" value="SUPER"/>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success btn-block">
-                                        <spring:message code='signUp.submit'/> <i class="glyphicon glyphicon-floppy-saved"></i>
-                                    </button>
+                                    <input type="submit" value="<spring:message code='signUp.submit'/>" class="btn btn-success btn-block">
+                                         <i class="glyphicon glyphicon-floppy-saved"></i>
+                                    </input>
                                 </div>
                                 <div class="col-md-12">
                                     <a href="${login}" class="btn btn-default btn-block">
                                         <i class="glyphicon glyphicon-log-in"></i><spring:message code='signUp.cancelar'/></a>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
                 <div class="row">

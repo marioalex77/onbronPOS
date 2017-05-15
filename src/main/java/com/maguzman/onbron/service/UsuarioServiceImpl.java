@@ -38,4 +38,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario actualizar(Usuario usuario){
         return dao.actualizar(usuario);
     }
+    public boolean esCorreoUnico(Integer idUsuario, String correo){
+        Usuario usuario = buscarPorCorreo(correo);
+        return (usuario==null||((idUsuario!=null)&&(usuario.getIdUsuario()==idUsuario)));
+    }
+    public boolean confirmaPassword(String password, String repassword){
+        return (password!=null&&(password.equals(repassword)));
+    }
 }

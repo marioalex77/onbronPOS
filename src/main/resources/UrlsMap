@@ -1,0 +1,21 @@
+#Seguridad
+/                                   GET     /index.jsp                              // Muestra pagina bienvenida.
+/home                               GET     /index.jsp                              // Muestra pagina bienvenida.
+/usuario                            GET     /auth/users.jsp                         // Muestra listado de usuarios.
+/usuario                            POST    /auth/users.jsp                         // Guarda el usuario en la base de datos.
+/usuario/agregar                    GET     /auth/add_user.jsp                      // Muestra formulario para agregar nuevo usuario
+/usuario/editar?idUsuario={id}      GET     /auth/add_user.jsp                      // Muestra formulario para editar un usuario.
+/accesoDenegado                     GET     /auth/access_denied.jsp                 // Acceso negado.
+/login                              GET     /auth/login.jsp                         // Muestra formulario de ingreso
+/registrarse                        GET     /auth/signUp.jsp                        // Muestra formulario registrar nuevo usuario
+/registrarse                        POST    /auth/login.jsp                         // Guarda un nuevo usuario registrado
+/forgotPassword                     GET     /auth/forgot_password.jsp               // Forgot password
+
+
+#Categoria
+/categoria                          GET     /products/categories.jsp                // Muestra listado de categorias
+/categoria                          POST    /products/categories.jsp                // Guarda una categoria en BD
+/categoria/agregar                  GET     /products/add_categorie.jsp             // Muestra formulario agregar categoria
+/categoria/borrar?idCategoria={id}  GET     /products/categories.jsp                // Borra una categoria
+/categoria/editar?idCategoria={id}  GET     /products/add_categorie.jsp             // Muestra formulario para editar una categoria
+/categoria/mostrar?idCategoria={id} GET     /products/show_categorie.jsp            // Muestra una categoria.

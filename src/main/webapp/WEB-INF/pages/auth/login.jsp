@@ -54,6 +54,16 @@
                     <div class="panel-heading"><spring:message code='login.container.title'/></div>
                     <div class="panel-body" style="padding-bottom:0;">
                         <form action="${actionUrl}" method="post" accept-charset="utf-8" class="separate-sections">
+                            <c:if test="${param.error != null}">
+                                <div class="alert alert-danger">
+                                    <p><spring:message code="invalid.password.login"/></p>
+                                </div>
+                            </c:if>
+                            <c:if test="${param.logout != null}">
+                                <div class="alert alert-success">
+                                    <p><spring:message code="loggedout.success.login"/></p>
+                                </div>
+                            </c:if>
                             <div style="display:none">
                                 <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
                             </div>
@@ -68,6 +78,11 @@
                                         <i class="glyphicon glyphicon-lock"></i>
                                     </span>
                                 <input type="password" name="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <div class="input-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="rememberme" name="remember-me"> <spring:message code="login.rememberme"/></label>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
