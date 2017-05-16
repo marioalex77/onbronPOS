@@ -37,7 +37,6 @@ public class HibernateConfiguration {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.maguzman.onbron.beans");
-        //sessionFactory.setPackagesToScan(new String[] { "com.maguzman.onbron.beans" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

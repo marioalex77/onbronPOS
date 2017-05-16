@@ -22,15 +22,6 @@ CREATE TABLE `rolusuario` (
 PRIMARY KEY (`idRolUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/* Populate USER_PROFILE Table */
-INSERT INTO rolusuario(tipo)
-VALUES ('USUARIO');
-INSERT INTO rolusuario(tipo)
-VALUES ('ADMIN');
-INSERT INTO rolusuario(tipo)
-VALUES ('SUPER');
-COMMIT;
-
 DROP TABLE IF EXISTS `usuariorolusuario`;
 CREATE TABLE `usuariorolusuario` (
   `idUsuario` int(11) unsigned NOT NULL,
@@ -40,6 +31,15 @@ CREATE TABLE `usuariorolusuario` (
   CONSTRAINT `FK_Usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON UPDATE CASCADE,
   CONSTRAINT `FK_RolUsuario` FOREIGN KEY (`idRolUsuario`) REFERENCES `rolusuario` (`idRolUsuario`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/* Populate USER_PROFILE Table */
+INSERT INTO rolusuario(tipo)
+VALUES ('USUARIO');
+INSERT INTO rolusuario(tipo)
+VALUES ('ADMIN');
+INSERT INTO rolusuario(tipo)
+VALUES ('SUPER');
+COMMIT;
 
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (

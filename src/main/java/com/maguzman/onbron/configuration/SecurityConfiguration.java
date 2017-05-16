@@ -52,6 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/super/**").access("hasRole('SUPER')")
                 .and().formLogin().loginPage("/login")
                 .usernameParameter("correo").passwordParameter("password")
+                .defaultSuccessUrl("/usuario")
                 .and().rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
                 .tokenValiditySeconds(86400)
                 .and().csrf()

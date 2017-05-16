@@ -1,19 +1,21 @@
 package com.maguzman.onbron.dao;
 
-import com.maguzman.onbron.beans.Categoria;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
-import java.util.List;
 import java.lang.reflect.ParameterizedType;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Created by maguzman on 11/05/2017.
  */
 public abstract class AbstractDAO <PK extends Serializable, T> {
-
+    static final Logger logger =  LogManager.getLogger(AbstractDAO.class);
     private final Class<T> clasePersistencia;
 
     @Autowired

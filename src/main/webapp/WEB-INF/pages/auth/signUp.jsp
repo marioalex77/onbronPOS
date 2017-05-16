@@ -142,13 +142,14 @@
                             </div>
                             <div style="display:none">
                                 <form:input type="hidden" path="estado" id="estado" value="ACTIVO"/>
-                                <form:input type="hidden" path="rolUsuario" id="rolUsuario" value="SUPER"/>
+                                <form:input type="hidden" path="rolUsuario" id="rolUsuario" value="3"/>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="submit" value="<spring:message code='signUp.submit'/>" class="btn btn-success btn-block">
+                                    <spring:message code='signUp.submit' var="submittxt"/>
+                                    <form:button type="submit" value="${submittxt}" class="btn btn-success btn-block">
                                          <i class="glyphicon glyphicon-floppy-saved"></i>
-                                    </input>
+                                    </form:button>
                                 </div>
                                 <div class="col-md-12">
                                     <a href="${login}" class="btn btn-default btn-block">

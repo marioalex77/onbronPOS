@@ -32,7 +32,7 @@ import java.util.Locale;
  */
 @Controller
 @RequestMapping("/")
-@SessionAttributes({"roles","generos"})
+@SessionAttributes("roles")
 public class OnbronSecurityController {
     @Autowired
     UsuarioService usuarioService;
@@ -132,32 +132,6 @@ public class OnbronSecurityController {
         return new ModelAndView("redirect: /usuario");
     }
 
-    /**
-     * Este metodo proveera perfiles de usuario a las vistas
-     */
-    @ModelAttribute("roles")
-    public List<RolUsuario> initializeProfiles() {
-        return rolUsuarioService.buscarTodos();
-    }
-
-    /**
-     * Este metodo proveera perfiles de usuario a las vistas
-     */
-    @ModelAttribute("generos")
-    public LinkedHashMap<Character,String> initGeneros() {
-        LinkedHashMap<Character,String> generos = new LinkedHashMap<Character,String>();
-        generos.put('M',"Masculino");
-        generos.put('F',"Femenino");
-        return generos;
-    }
-
-    @RequestMapping(value = "/accesoDenegado", method = RequestMethod.GET)
-    public ModelAndView accesoDenegado(ModelAndView model){
-        model.addObject("loggedinuser", getPrincipal());
-        model.setViewName("access_denied");
-        return model;
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView loginPage(ModelAndView model) {
         if (isCurrentAuthenticationAnonymous()){
@@ -198,13 +172,17 @@ public class OnbronSecurityController {
         if(!usuarioService.esCorreoUnico(usuario.getIdUsuario(), usuario.getCorreo())){
             FieldError correoError = new FieldError("usuario", "correo",
                     messageSource.getMessage("non.unique.correo", new String[]{usuario.getCorreo()}, Locale.getDefault()));
+            result.addError(correoError);
+            logger.debug("Correo Error",result.getAllErrors().toString());
             model.setViewName("/auth/signUp");
             return model;
         }
         if(!usuarioService.confirmaPassword(usuario)){
             FieldError repasswordError = new FieldError("usuario", "rePassword",
                     messageSource.getMessage("non.confirm.password",new String[]{usuario.getCorreo()},Locale.getDefault()));
-            model.setViewName("/auth/signUP");
+            result.addError(repasswordError);
+            logger.debug("RePassword Error",result.getAllErrors().toString());
+            model.setViewName("/auth/signUp");
             return model;
         }
         else{
@@ -236,6 +214,32 @@ public class OnbronSecurityController {
         }
         return new ModelAndView("redirect:/login?logout");
     }
+    @RequestMapping(value = "/accesoDenegado", method = RequestMethod.GET)
+    public ModelAndView accesoDenegado(ModelAndView model){
+        model.addObject("loggedinuser", getPrincipal());
+        model.setViewName("access_denied");
+        return model;
+    }
+
+    /**
+     * Este metodo proveera perfiles de usuario a las vistas
+     */
+    @ModelAttribute("roles")
+    public List<RolUsuario> initializeProfiles() {
+        return rolUsuarioService.buscarTodos();
+    }
+
+    /**
+     * Este metodo proveera generos de usuario a las vistas
+     */
+    @ModelAttribute("generos")
+    public LinkedHashMap <Character,String> initGeneros() {
+        LinkedHashMap <Character,String> generos = new LinkedHashMap<Character,String>();
+        generos.put('M',"Masculino");
+        generos.put('F',"Femenino");
+        return generos;
+    }
+
 
     /**
      * This method returns the principal[user-name] of logged-in user.

@@ -23,48 +23,42 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @Email//(message = "debe digitar un correo")
-    @NotEmpty//(message = "Correo no puede ser vacio")
-    @Size(min=3, max=255)//,message = "Correo tamaño debe ser mayor a 3")
-    @Column(name="correo")
+    @NotEmpty
+    @Column(name = "correo")
     private String correo;
 
-    @NotEmpty//(message = "Password no puede ser vacio")
-    @Column(name="password")
+    @NotEmpty
+    @Column(name = "password")
     private String password;
 
     @Transient
-    @NotEmpty//(message = "Confirme Password no puede ser vacio")
     private String rePassword;
 
-    @NotEmpty//(message = "Nombres no puede ser vacio")
-    @Size(min=3, max=100)//, message = "Tamaño nombres debe ser mayor a 3")
-    @Column(name="nombres")
+    @NotEmpty
+    @Column(name = "nombres")
     private String nombres;
 
-    @NotEmpty//(message = "Apellido no puede ser vacio")
-    @Size(min=3, max=45)//, message = "Tamaño apellido debe ser mayor a 3")
-    @Column(name="primerApellido")
+    @NotEmpty
+    @Column(name = "primerApellido")
     private String primerApellido;
 
-    @Column(name="segundoApellido")
+    @Column(name = "segundoApellido")
     private String segundoApellido;
 
     @NotEmpty
-    @Column(name="genero")
+    @Column(name = "genero")
     private String genero = Genero.MASCULINO.getGenero();
 
     @NotEmpty
-    @Size(min=3,max = 30)
-    @Column(name="estado")
+    @Column(name = "estado")
     private String estado = Estado.ACTIVO.getEstado();
 
     @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="usuariorolusuario",
-            joinColumns = {@JoinColumn(name="idUsuario")},
-            inverseJoinColumns = {@JoinColumn(name="idRolUsuario")})
-        private Set<RolUsuario> rolUsuario = new HashSet<RolUsuario>();
+    @JoinTable(name = "usuariorolusuario",
+            joinColumns = {@JoinColumn(name = "idUsuario")},
+            inverseJoinColumns = {@JoinColumn(name = "idRolUsuario")})
+    private Set<RolUsuario> rolUsuario = new HashSet<RolUsuario>();
 
     public Usuario() {
         this.idUsuario = 0;
@@ -75,6 +69,9 @@ public class Usuario implements Serializable {
         this.segundoApellido = "";
         this.genero = "M";
         this.estado = "ACTIVO";
+        RolUsuario rolUsuario = new RolUsuario();
+        rolUsuario.setTipo("USUARIO");
+        this.rolUsuario.add(rolUsuario);
     }
 
     public Integer getIdUsuario() {
@@ -194,6 +191,7 @@ public class Usuario implements Serializable {
                 "idUsuario=" + idUsuario +
                 ", correo='" + correo + '\'' +
                 ", password='" + password + '\'' +
+                ", rePassword='" + rePassword + '\'' +
                 ", nombres='" + nombres + '\'' +
                 ", primerApellido='" + primerApellido + '\'' +
                 ", segundoApellido='" + segundoApellido + '\'' +

@@ -3,8 +3,8 @@ package com.maguzman.onbron.service;
 import com.maguzman.onbron.beans.RolUsuario;
 import com.maguzman.onbron.beans.Usuario;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
-import org.jboss.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
-    static final Logger logger = LoggerFactory.logger(CustomUserDetailsService.class);
+    static final Logger logger =  LogManager.getLogger(CustomUserDetailsService.class);
 
     @Autowired
     private UsuarioService usuarioService;
@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional(readOnly=true)
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
             Usuario usuario = usuarioService.buscarPorCorreo(correo);
-            logger.infof ("Usuario: {}",usuario);
+            logger.debug("Usuario: {}",usuario.toString());
             if(usuario==null){
                 logger.info("Usuario no encontrado");
                 throw new UsernameNotFoundException("Usuario no encontrado");
@@ -45,7 +45,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         for(RolUsuario rolUsuario: usuario.getRolUsuario()){
             authorities.add(new SimpleGrantedAuthority("ROLE_" + rolUsuario.getTipo()));
         }
-        logger.infof("authorities : {}", authorities);
+        logger.debug("authorities : {}", authorities.toString());
         return authorities;
     }
 }
