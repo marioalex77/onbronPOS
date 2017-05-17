@@ -6,7 +6,7 @@ $.extend( true, $.fn.dataTable.defaults, {
     "sDom": '<"text-center"<"btn-group"T>><"clear"><"col-md-6"l><"col-md-6 text-right"f>rt<"col-md-6"i><"col-md-6 text-right"p><"clear">',
     "sPaginationType": "bootstrap",
     "oLanguage": {
-        "sUrl": "assets/datatables/dataTables.txt"
+        "sUrl": "../datatables/dataTables.txt"
     },
     "fnDrawCallback" : function() {
         $(".tip").tooltip();

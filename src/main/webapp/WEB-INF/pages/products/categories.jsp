@@ -73,7 +73,7 @@ $(document).ready(function() {
                 </thead>
                 <tbody>
                     <c:forEach var="categoria" items="${categorias}">
-                        <spring:url value="/categoria/mostrar?idCategoria=${categoria.idCategoria}" var="categoriaUrl" />
+                        <spring:url value="/categoria/mostrar?idCategoria=${categoria.idCategoria}" var="verUrl" />
                         <spring:url value="/categoria/borrar?idCategoria=${categoria.idCategoria}" var="borrarUrl" />
                         <spring:url value="/categoria/editar?idCategoria=${categoria.idCategoria}" var="editarUrl" />
                         <tr>
@@ -81,7 +81,7 @@ $(document).ready(function() {
                         <td>${categoria.nombre}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="${categoriaUrl}" class="tip btn btn-warning btn-xs" title="<spring:message code='categories.action.show'/>">
+                                <a href="${verUrl}" class="tip btn btn-info btn-xs" title="<spring:message code='categories.action.show'/>">
                                     <i class="glyphicon glyphicon-eye-open"></i>
                                 </a>
                                 <a href="${editarUrl}" class="tip btn btn-warning btn-xs" title="<spring:message code='categories.action.update'/>">

@@ -9,7 +9,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <!--<base href="http://demo.tecdiary.my/spos/" />-->
     <title><spring:message code="show_categorie.title"/> | <spring:message code="application.name"/></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico'/>"/>

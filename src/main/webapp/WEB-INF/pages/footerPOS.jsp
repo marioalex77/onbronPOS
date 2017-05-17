@@ -14,7 +14,7 @@
 <div id="footer">
     <div class="container">
         <p class="credit">Copyright &copy; 2017 <spring:message code="application.company"/> v0.1
-            <a href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title="Help"><i class="icon-question-sign"></i></a>
+            <!--a href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title="Help"><i class="icon-question-sign"></i></a-->
         </p>
     </div>
 </div>

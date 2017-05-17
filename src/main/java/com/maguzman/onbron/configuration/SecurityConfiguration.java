@@ -29,13 +29,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("customUserDetailsService")
     UserDetailsService userDetailsService;
-/*
+
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    PersistentTokenRepository tokenRepository;*/
+    PersistentTokenRepository tokenRepository;
 
-    @Autowired
-    HibernateTokenRepositoryImpl tokenRepository;
+    //HibernateTokenRepositoryImpl tokenRepository;
 
     @Autowired
     public void configureGloblalSecurity(AuthenticationManagerBuilder auth) throws Exception{
@@ -79,7 +78,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return tokenBasedServices;
     }
     @Bean
-    public AuthenticationTrustResolver getAuthenticationTrustResolver() {
+    public AuthenticationTrustResolver getAuthenticationTrustResolver   () {
         return new AuthenticationTrustResolverImpl();
     }
 

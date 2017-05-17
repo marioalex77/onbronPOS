@@ -15,14 +15,6 @@ import java.util.List;
 @Repository("usuarioDAO")
 public class UsuarioDAOImpl extends AbstractDAO <Integer, Usuario> implements UsuarioDAO {
 
-    public Usuario buscarPorClave(Integer idUsuario) {
-        Usuario usuario = buscarPorClave(idUsuario);
-        if(usuario!=null){
-            Hibernate.initialize(usuario.getRolUsuario());
-        }
-        return usuario;
-    }
-
     public Usuario buscarPorCorreo(String correo){
         Criteria crit = createCriterioEntidad();
         crit.add(Restrictions.eq("correo", correo));

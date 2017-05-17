@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%--
   Created by IntelliJ IDEA.
   User: maguzman
@@ -8,8 +9,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <spring:url value="/categoria/agregar" var="agregarCategoria" />
 <spring:url value="/categoria" var="listarCategoria" />
+<spring:url value="/usuario/agregar" var="agregarUsuario" />
+<spring:url value="/usuario" var="listarUsuario" />
+<spring:url value="/logout" var="logoutUrl" />
+
 <div class="navbar navbar-static-top navbar-inverse">
     <div class="container">
         <div class="navbar-header">
@@ -57,32 +63,37 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Admin! <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, ${loggedinuser}! <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=change_password">Change Password</a></li>
-                        <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=logout">Logout</a></li>
+                        <li><a href="${logoutUrl}"><spring:message code="application.menu.logout"/></a></li>
                     </ul>
                 </li>
             </ul>
             <div class="pull-right">
-                <!--a href="http://codecanyon.net/item/simple-pos-point-of-sale-made-easy/3947976?ref=tecdiary"
-                   class="tip btn btn-default btn-sm pull-left external"
-                   style="padding:5px 8px; margin: 5px 5px 5px 5px;"
-                   title="<strong>Liked?</strong> Let's Purchase<br><strong>Have Suggestion?</strong> Please send email to contact@tecdiary.com"
-                   data-html="true" data-placement="bottom"> Buy Now </a-->
                 <ul class="nav navbar-nav">
-                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.php?module=products">List Products </a></li>
-                            <li><a href="index.php?module=products&view=add">Add Product</a></li>
-                            <!--li><a href="index.php?module=products&view=import">Import by CSV</a></li-->
-                            <!--li><a href="index.php?module=products&view=sheet">Print Barcode</a></li-->
-                            <!--li><a href="index.php?module=products&view=labels">Print Lablels</a></li-->
-                            <li class="divider"></li>
-                            <li><a href="${listarCategoria}"><spring:message code="application.menu.products.listcategories"/></a></li>
-                            <li><a href="${agregarCategoria}"><spring:message code="application.menu.products.addcategories"/></a></li>
-                        </ul>
-                    </li>
+                    <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="index.php?module=products">List Products </a></li>
+                                </sec:authorize>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="index.php?module=products&view=add">Add Product</a></li>
+                                </sec:authorize>
+                                <!--li><a href="index.php?module=products&view=import">Import by CSV</a></li-->
+                                <!--li><a href="index.php?module=products&view=sheet">Print Barcode</a></li-->
+                                <!--li><a href="index.php?module=products&view=labels">Print Lablels</a></li-->
+                                <li class="divider"></li>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="${listarCategoria}"><spring:message code="application.menu.products.listcategories"/></a></li>
+                                </sec:authorize>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="${agregarCategoria}"><spring:message code="application.menu.products.addcategories"/></a></li>
+                                </sec:authorize>
+                            </ul>
+                        </li>
+                    </sec:authorize>
                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="index.php?module=customers">List Customers</a></li>
@@ -103,6 +114,16 @@
                             <li class="divider"></li>
                             <li><a href="index.php?module=reports&view=top">Top Products</a></li>
                             <li><a href="index.php?module=reports&view=products">Products Reports</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <sec:authorize access="hasRole('SUPER')or hasRole('ADMIN')">
+                                <li><a href="${listarUsuario}"><spring:message code="application.menu.products.listusers"/></a></li>
+                            </sec:authorize>
+                            <sec:authorize access="hasRole('SUPER')">
+                                <li><a href="${agregarUsuario}"><spring:message code="application.menu.products.addusers"/></a></li>
+                            </sec:authorize>
                         </ul>
                     </li>
                 </ul>

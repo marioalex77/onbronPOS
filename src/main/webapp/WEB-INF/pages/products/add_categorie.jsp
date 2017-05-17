@@ -9,7 +9,6 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <!--<base href="http://demo.tecdiary.my/spos/" />-->
         <c:choose>
             <c:when test="${categoria.idCategoria == 0}">
                 <title><spring:message code="add_categorie.title"/> | <spring:message code="application.name"/></title>
@@ -18,7 +17,6 @@
                 <title><spring:message code="edit_categorie.title"/> | <spring:message code="application.name"/></title>
             </c:otherwise>
         </c:choose>
-
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico'/>"/>
         <link rel="stylesheet" href="<c:url value='/resources/css/bootstrapPOS.css'/>" type="text/css" charset="utf-8">
@@ -37,7 +35,6 @@
     <body>
         <div id="wrap">
             <jsp:include page="../navbarPOS.jsp"/>
-            <spring:url value="/categoria" var="categoriaActionUrl" />
             <div class="container">
                 <c:choose>
                     <c:when test="${categoria.idCategoria == 0}">
@@ -49,7 +46,11 @@
                 </c:choose>
 
                 <p><spring:message code="add_categorie.introtext"/></p>
-                <form:form action="${categoriaActionUrl}" method="POST" modelAttribute="categoria">
+                <spring:url value="/categoria" var="actionUrl" />
+                <form:form action="${actionUrl}" method="POST" modelAttribute="categoria">
+                    <div style="display:none">
+                        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+                    </div>
                     <div style="display:none">
                         <form:input type="hidden" path="idCategoria"/>
                     </div>
@@ -73,8 +74,8 @@
                     </c:choose>
                 </form:form>
             </div>
-            <jsp:include page="../footerPOS.jsp"/>
         </div>
+        <jsp:include page="../footerPOS.jsp"/>
         <script type="text/javascript" src="<c:url value='/resources/js/bootstrapPOS.min.js'/>"></script>
         <script src="<c:url value='/resources/js/bootstrap-prettyfile.js'/>"></script>
         <script src="<c:url value='/resources/js/bootstrap-datepicker.js'/>"></script>

@@ -109,7 +109,7 @@ public class CategoriaController {
 
     //mostrar categoria
     @RequestMapping(value = "/categoria/mostrar", method = RequestMethod.GET)
-    public ModelAndView mostrarCategoria(HttpServletRequest request, Locale locale){
+    public ModelAndView mostrarCategoria(HttpServletRequest request){
         int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
         Categoria categoria = categoriaService.buscarPorClave(categoriaId);
         //logger.debugf("mostrarCategoria()",categoria);

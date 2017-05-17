@@ -1,5 +1,6 @@
 package com.maguzman.onbron.security.controller;
 
+import com.maguzman.onbron.beans.Estado;
 import com.maguzman.onbron.beans.RolUsuario;
 import com.maguzman.onbron.beans.Usuario;
 import com.maguzman.onbron.service.RolUsuarioService;
@@ -61,7 +62,6 @@ public class OnbronSecurityController {
     public ModelAndView listarUsuarios(ModelAndView model){
         List<Usuario> usuarios = usuarioService.buscarTodos();
         model.addObject("usuarios",usuarios);
-        model.addObject("loggedinuser", getPrincipal());
         model.setViewName("/auth/users");
         return  model;
     }
@@ -71,7 +71,6 @@ public class OnbronSecurityController {
     public ModelAndView nuevoUsuario(ModelAndView model){
         Usuario usuario = new Usuario();
         model.addObject("usuario", usuario);
-        model.addObject("loggedinuser", getPrincipal());
         model.setViewName("/auth/add_user");
         return model;
     }
@@ -83,6 +82,7 @@ public class OnbronSecurityController {
     @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public ModelAndView guardarUsuario(@ModelAttribute("usuario") @Valid Usuario usuario,
                                        BindingResult result, ModelAndView model){
+        logger.debug(usuario.toString());
         if(result.hasErrors()){
             model.setViewName("/auth/add_user");
             return model;
@@ -90,6 +90,16 @@ public class OnbronSecurityController {
         if(!usuarioService.esCorreoUnico(usuario.getIdUsuario(), usuario.getCorreo())){
             FieldError correoError = new FieldError("usuario", "correo",
                     messageSource.getMessage("non.unique.correo", new String[]{usuario.getCorreo()}, Locale.getDefault()));
+            result.addError(correoError);
+            logger.debug("Correo Error",result.getAllErrors().toString());
+            model.setViewName("/auth/add_user");
+            return model;
+        }
+        if(!usuarioService.confirmaPassword(usuario)){
+            FieldError repasswordError = new FieldError("usuario", "rePassword",
+                    messageSource.getMessage("non.confirm.password",new String[]{usuario.getCorreo()},Locale.getDefault()));
+            result.addError(repasswordError);
+            logger.debug("RePassword Error",result.getAllErrors().toString());
             model.setViewName("/auth/add_user");
             return model;
         }
@@ -103,7 +113,6 @@ public class OnbronSecurityController {
             model.addObject("success", "Usuario " + usuario.getNombres() + " "+
                     usuario.getPrimerApellido() + " " + usuario.getSegundoApellido() + " "
                     + " registrado correctamente");
-            model.addObject("loggedinuser", getPrincipal());
             model.setViewName("redirect:/usuario");
             return model;
         }
@@ -130,6 +139,15 @@ public class OnbronSecurityController {
         Usuario usuario = usuarioService.buscarPorClave(usuarioId);
         usuarioService.borrarPorCorreo(usuario.getCorreo());
         return new ModelAndView("redirect: /usuario");
+    }
+
+    @RequestMapping(value="/usuario/mostrar", method = RequestMethod.GET)
+    public ModelAndView mostrarUsuario(HttpServletRequest request){
+        int usuarioId = Integer.parseInt(request.getParameter("idUsuario"));
+        Usuario usuario = usuarioService.buscarPorClave(usuarioId);
+        ModelAndView model = new ModelAndView("/auth/show_user");
+        model.addObject("usuario", usuario);
+        return model;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -195,7 +213,6 @@ public class OnbronSecurityController {
             model.addObject("success", "Usuario " + usuario.getNombres() + " "+
                     usuario.getPrimerApellido() + " " + usuario.getSegundoApellido() + " "
                     + " registrado correctamente");
-            model.addObject("loggedinuser", getPrincipal());
             model.setViewName("redirect:/login");
             return model;
         }
@@ -214,9 +231,9 @@ public class OnbronSecurityController {
         }
         return new ModelAndView("redirect:/login?logout");
     }
+
     @RequestMapping(value = "/accesoDenegado", method = RequestMethod.GET)
     public ModelAndView accesoDenegado(ModelAndView model){
-        model.addObject("loggedinuser", getPrincipal());
         model.setViewName("access_denied");
         return model;
     }
@@ -240,6 +257,22 @@ public class OnbronSecurityController {
         return generos;
     }
 
+    @ModelAttribute("estados")
+    public LinkedHashMap <String,String> initEstados() {
+        LinkedHashMap <String,String> estados = new LinkedHashMap<String,String>();
+        estados.put(Estado.ACTIVO.getEstado(),Estado.ACTIVO.getName());
+        estados.put(Estado.INACTIVO.getEstado(),Estado.INACTIVO.getName());
+        estados.put(Estado.BLOQUEADO.getEstado(),Estado.BLOQUEADO.getName());
+        estados.put(Estado.BORRADO.getEstado(),Estado.BLOQUEADO.getName());
+        return estados;
+    }
+
+    @ModelAttribute("loggedinuser")
+    public String intUsuarioLogeado(){
+        Usuario loggedUser = new Usuario();
+        loggedUser = usuarioService.buscarPorCorreo(getPrincipal());
+        return loggedUser.getNombres();
+    }
 
     /**
      * This method returns the principal[user-name] of logged-in user.

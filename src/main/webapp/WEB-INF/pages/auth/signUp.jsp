@@ -61,6 +61,9 @@
                     <div class="panel-body" style="padding-bottom:0;">
                         <form:form action="${actionUrl}" method="POST" modelAttribute="usuario" class="separate-sections">
                             <div style="display:none">
+                                <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+                            </div>
+                            <div style="display:none">
                                 <form:input type="hidden" path="idUsuario" id="idUsuario"/>
                             </div>
                             <div class="input-group">
@@ -165,6 +168,6 @@
             </div>
         </div>
     </div>
-    <script src="http://demo.tecdiary.my/spos/assets/js/jquery-ui.min.js"></script>
+    <script src="<c:url value='/resources/js/jquery-ui.min.js'/>"></script>
 </body>
 </html>

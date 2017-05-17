@@ -12,14 +12,17 @@ CREATE TABLE `usuario` (
   `genero` varchar(1) NOT NULL,
   `estado` varchar(30) NOT NULL,
   PRIMARY KEY (`idUsuario`),
-  UNIQUE KEY `correo_UNIQUE` (`correo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `correo_UNIQUE` (`correo`),
+  CHECK(`genero` IN ("M","F") AND `estado` IN ("ACTIVO","INACTIVO","BORRADO","BLOQUEADO"))
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
 
 DROP TABLE IF EXISTS `rolusuario`;
 CREATE TABLE `rolusuario` (
-`idRolUsuario` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`tipo` varchar(30) NOT NULL,
-PRIMARY KEY (`idRolUsuario`)
+  `idRolUsuario` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(30) NOT NULL,
+  PRIMARY KEY (`idRolUsuario`),
+  CHECK(`tipo` IN ("USUARIO","ADMIN","SUPER"))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `usuariorolusuario`;
