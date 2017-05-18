@@ -12,8 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.maguzman.onbron.dao.CategoriaDAO;
 import com.maguzman.onbron.beans.Categoria;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
-@Service
+@Service("categoriaService")
 @Transactional
 public class CategoriaServiceImpl implements CategoriaService{
 
@@ -38,4 +39,5 @@ public class CategoriaServiceImpl implements CategoriaService{
     public Categoria actualizar(Categoria categoria){
         return categoriaDAO.actualizar(categoria);
     }
+
 }

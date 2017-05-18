@@ -33,4 +33,19 @@ public class RolUsuarioServiceImpl implements RolUsuarioService{
     public List<RolUsuario> buscarTodos(){
         return dao.buscarTodos();
     }
+
+    @Override
+    public void salvar(RolUsuario rolUsuario) {
+        dao.salvar(rolUsuario);
+    }
+
+    @Override
+    public void borrar(Integer idRolUsuario) {
+        dao.borrar(idRolUsuario);
+    }
+
+    @Override
+    public RolUsuario actualizar(RolUsuario rolUsuario) {
+        return actualizar(rolUsuario);
+    }
 }

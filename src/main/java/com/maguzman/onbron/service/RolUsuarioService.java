@@ -7,8 +7,6 @@ import java.util.List;
 /**
  * Created by maguzman on 11/05/2017.
  */
-public interface RolUsuarioService {
-    RolUsuario buscarPorClave(Integer idRolUsuario);
+public interface RolUsuarioService extends AbstractService<Integer,RolUsuario> {
     RolUsuario buscarPorTipo(String tipo);
-    List<RolUsuario> buscarTodos();
 }

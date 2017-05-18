@@ -7,10 +7,5 @@ package com.maguzman.onbron.service;
 import java.util.List;
 import com.maguzman.onbron.beans.Categoria;
 
-public interface CategoriaService {
-    Categoria buscarPorClave(Integer idCategoria);
-    List<Categoria> buscarTodos();
-    void salvar(Categoria categoria);
-    void borrar(Integer idCategoria);
-    Categoria actualizar(Categoria categoria);
+public interface CategoriaService extends AbstractService<Integer,Categoria> {
 }

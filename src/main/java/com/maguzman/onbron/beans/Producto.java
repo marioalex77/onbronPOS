@@ -32,8 +32,8 @@ public class Producto implements Serializable{
     private char habilitado;
     private char visible;
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idImagen")
-    private Imagen imagen;
+    @JoinColumn(name="idDocumento")
+    private Documento documento;
     @ManyToOne
     @JoinColumn(name="idCategoria")
     private Categoria categoria;
@@ -54,7 +54,7 @@ public class Producto implements Serializable{
         this.orden = 0;
         this.habilitado = 0;
         this.visible = 0;
-        this.imagen = null;
+        this.documento = null;
         this.categoria = new Categoria();
         this.impuesto = new Impuesto();
         this.proveedor = new Proveedor();
@@ -148,12 +148,6 @@ public class Producto implements Serializable{
     public void setVisible(char visible) {
         this.visible = visible;
     }
-    public Imagen getImagen() {
-        return imagen;
-    }
-    public void setImagen(Imagen imagen) {
-        this.imagen = imagen;
-    }
     public Categoria getCategoria() {
         return categoria;
     }
@@ -171,5 +165,17 @@ public class Producto implements Serializable{
     }
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
+    }
+
+    public Documento getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(Documento documento) {
+        this.documento = documento;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 }

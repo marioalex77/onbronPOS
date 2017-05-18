@@ -3,6 +3,8 @@ package com.maguzman.onbron.beans;
  * Created by maguzman on 27/04/2017.
  */
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,25 +23,29 @@ public class Impuesto implements Serializable {
     @Id
     @GeneratedValue
     private int idImpuesto;
-    @Size(min=3,max=50, message = "Descripcion no puede ser mayor a 50 caracteres")
-    private String descripcion;
+    @NotEmpty
+    @Size (min=3, max=50)
+    private String nombre;
+    @NotEmpty
     @Digits(integer = 2, fraction = 3, message = "El valor no puede ser mayor a 99.999")
     private double porcentaje;
-    private char habilitado;
+    private String descripcion;
+    @NotEmpty
+    private String estado;
 
     public Impuesto() {
+        this.idImpuesto=0;
+        this.nombre = "";
+        this.porcentaje = 0.00;
         this.descripcion = "";
-        this.porcentaje = 0;
-        this.habilitado = 0;
+        this.estado = Estado.ACTIVO.getEstado();
     }
 
-    public Impuesto(int idImpuesto, String descripcion, double porcentaje,
-                    char habilitado) {
-        super();
-        this.idImpuesto = idImpuesto;
-        this.descripcion = descripcion;
+    public Impuesto(String nombre, double porcentaje, String descripcion, String estado) {
+        this.nombre = nombre;
         this.porcentaje = porcentaje;
-        this.habilitado = habilitado;
+        this.descripcion = descripcion;
+        this.estado = estado;
     }
 
     public int getIdImpuesto() {
@@ -66,11 +72,58 @@ public class Impuesto implements Serializable {
         this.porcentaje = porcentaje;
     }
 
-    public char getHabilitado() {
-        return habilitado;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setHabilitado(char habilitado) {
-        this.habilitado = habilitado;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Impuesto)) return false;
+
+        Impuesto impuesto = (Impuesto) o;
+
+        if (idImpuesto != impuesto.idImpuesto) return false;
+        return nombre.equals(impuesto.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = idImpuesto;
+        result = 31 * result + nombre.hashCode();
+        temp = Double.doubleToLongBits(porcentaje);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + descripcion.hashCode();
+        result = 31 * result + estado.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Impuesto{" +
+                "idImpuesto=" + idImpuesto +
+                ", nombre='" + nombre + '\'' +
+                ", porcentaje=" + porcentaje +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

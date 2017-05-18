@@ -19,3 +19,11 @@
 /categoria/borrar?idCategoria={id}  GET     /products/categories.jsp                // Borra una categoria
 /categoria/editar?idCategoria={id}  GET     /products/add_categorie.jsp             // Muestra formulario para editar una categoria
 /categoria/mostrar?idCategoria={id} GET     /products/show_categorie.jsp            // Muestra una categoria.
+
+#Proveedor
+/proveedor                          GET     /products/providers.jsp                // Muestra listado de proveedores
+/proveedor                          POST    /products/providers.jsp                // Guarda un proveedor en BD
+/proveedor/agregar                  GET     /products/add_provider.jsp             // Muestra formulario agregar un proveedor
+/proveedor/borrar?idCategoria={id}  GET     /products/providers.jsp                // Borra un proveedor
+/proveedor/editar?idCategoria={id}  GET     /products/add_provider.jsp             // Muestra formulario para editar un proveedor
+/proveedor/mostrar?idCategoria={id} GET     /products/show_provider.jsp            // Muestra un proveedor

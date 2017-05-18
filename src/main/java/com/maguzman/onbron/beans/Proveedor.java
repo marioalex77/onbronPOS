@@ -3,15 +3,14 @@ package com.maguzman.onbron.beans;
  * Created by maguzman on 27/04/2017.
  */
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name="proveedor")
 public class Proveedor implements Serializable {
     /**
      *
@@ -19,31 +18,30 @@ public class Proveedor implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProveedor;
-    @Size(min=3, max=15, message = "El numero de registro de contribuyente no puede ser mayor a 15 caracteres")
-    private String nrc;// Numero de registro de contribuyente
-    @Size(min=3, max=255, message = "El nombre del proveedor no puede ser mayor a 15 caracteres")
+    @NotEmpty
+    @Size(min=3, max=255)
     private String nombre;
-    @Size(min=3, max=17, message = "El NIT del proveedor no puede ser mayor a 17 caracteres")
+    private String nrc;// Numero de registro de contribuyente
     private String nit;
 
     public Proveedor() {
-        this.nrc = "";
         this.nombre = "";
+        this.nrc="";
+        this.nit="";
     }
 
-    public Proveedor(int idProveedor, String nrc, String nombre) {
+    public Proveedor(int idProveedor, String nombre) {
         super();
         this.idProveedor = idProveedor;
-        this.nrc = nrc;
         this.nombre = nombre;
     }
 
-    public Proveedor(String nrc, String nombre) {
-        super();
-        this.nrc = nrc;
+    public Proveedor(String nombre, String nrc, String nit) {
         this.nombre = nombre;
+        this.nrc = nrc;
+        this.nit = nit;
     }
 
     public int getIdProveedor() {
@@ -76,5 +74,33 @@ public class Proveedor implements Serializable {
 
     public void setNit(String nit) {
         this.nit = nit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Proveedor)) return false;
+
+        Proveedor proveedor = (Proveedor) o;
+
+        if (idProveedor != proveedor.idProveedor) return false;
+        return (nombre != null ? nombre.equals(proveedor.nombre) : proveedor.nombre == null);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = idProveedor;
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Proveedor{" +
+                "idProveedor=" + idProveedor +
+                ", nombre='" + nombre + '\'' +
+                ", nrc='" + nrc + '\'' +
+                ", nit='" + nit + '\'' +
+                '}';
     }
 }
