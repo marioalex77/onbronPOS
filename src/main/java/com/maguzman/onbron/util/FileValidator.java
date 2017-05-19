@@ -1,6 +1,6 @@
 package com.maguzman.onbron.util;
 
-import com.maguzman.onbron.beans.FileBucket;
+import com.maguzman.onbron.beans.Producto;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Validator;
 import org.springframework.validation.Errors;
@@ -13,12 +13,12 @@ public class FileValidator implements Validator{
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return FileBucket.class.isAssignableFrom(aClass);
+        return Producto.class.isAssignableFrom(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        FileBucket file = (FileBucket) o;
+        Producto file = (Producto) o;
         if(file.getFile()!=null){
             if(file.getFile().getSize()==0){
                 errors.rejectValue("file","missing.file");

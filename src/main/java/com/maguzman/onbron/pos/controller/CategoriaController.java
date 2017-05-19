@@ -84,7 +84,7 @@ public class CategoriaController  extends GenericController implements Interface
     @RequestMapping(value = "/categoria/borrar", method = RequestMethod.GET)
     public ModelAndView borrar(HttpServletRequest request) {
         int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
-        logger.debug("borrarCategoria() Categoria {}",categoriaId);
+        logger.debug("borrar() Categoria {}",categoriaId);
         categoriaService.borrar(categoriaId);
         return new ModelAndView("redirect:/categoria");
     }

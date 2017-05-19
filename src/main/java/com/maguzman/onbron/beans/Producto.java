@@ -2,6 +2,8 @@ package com.maguzman.onbron.beans;
 /**
  * Created by maguzman on 27/04/2017.
  */
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -43,6 +45,10 @@ public class Producto implements Serializable{
     @ManyToOne
     @JoinColumn(name="idProveedor")
     private Proveedor proveedor;
+    @Transient
+    private MultipartFile file;
+    @Transient
+    private String fileDescripcion;
 
     public Producto() {
         super();
@@ -177,5 +183,39 @@ public class Producto implements Serializable{
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    public String getFileDescripcion() {
+        return fileDescripcion;
+    }
+
+    public void setFileDescripcion(String fileDescripcion) {
+        this.fileDescripcion = fileDescripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + idProducto +
+                ", codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", precioUnitario=" + precioUnitario +
+                ", precioCompra=" + precioCompra +
+                ", orden=" + orden +
+                ", descripcion='" + descripcion + '\'' +
+                ", habilitado=" + habilitado +
+                ", visible=" + visible +
+                ", categoria=" + categoria +
+                ", impuesto=" + impuesto +
+                ", proveedor=" + proveedor +
+                '}';
     }
 }

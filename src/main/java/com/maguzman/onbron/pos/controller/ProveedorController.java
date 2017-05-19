@@ -101,7 +101,7 @@ public class ProveedorController extends GenericController implements InterfaceC
         int proveedorId = Integer.parseInt(request.getParameter("idProveedor"));
         Proveedor proveedor = proveedorService.buscarPorClave(proveedorId);
         logger.debug("Mostrar proveedor {}",proveedor);
-        ModelAndView model = new ModelAndView("/products/show_proveedor");
+        ModelAndView model = new ModelAndView("/products/show_provider");
         model.addObject("proveedor", proveedor);
         return model;
     }
