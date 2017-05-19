@@ -24,6 +24,14 @@
 /proveedor                          GET     /products/providers.jsp                // Muestra listado de proveedores
 /proveedor                          POST    /products/providers.jsp                // Guarda un proveedor en BD
 /proveedor/agregar                  GET     /products/add_provider.jsp             // Muestra formulario agregar un proveedor
-/proveedor/borrar?idCategoria={id}  GET     /products/providers.jsp                // Borra un proveedor
-/proveedor/editar?idCategoria={id}  GET     /products/add_provider.jsp             // Muestra formulario para editar un proveedor
-/proveedor/mostrar?idCategoria={id} GET     /products/show_provider.jsp            // Muestra un proveedor
+/proveedor/borrar?idProveedor={id}  GET     /products/providers.jsp                // Borra un proveedor
+/proveedor/editar?idProveedor={id}  GET     /products/add_provider.jsp             // Muestra formulario para editar un proveedor
+/proveedor/mostrar?idProveedor={id} GET     /products/show_provider.jsp            // Muestra un proveedor
+
+#Productos
+/producto                           GET     /products/products.jsp                  // Muestra listado de proveedores
+/producto                           POST    /products/products.jsp                  // Guarda un proveedor en BD
+/producto/agregar                   GET     /products/add_product.jsp               // Muestra formulario agregar un proveedor
+/producto/borrar?idProducto={id}    GET     /products/products.jsp                  // Borra un proveedor
+/producto/editar?idProducto={id}    GET     /products/add_product.jsp               // Muestra formulario para editar un proveedor
+/producto/mostrar?idProducto={id}   GET     /products/show_product.jsp              // Muestra un proveedor
