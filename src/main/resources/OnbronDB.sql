@@ -66,6 +66,8 @@ CREATE TABLE `proveedor` (
   `nombre` varchar(255) NOT NULL,
   `nrc` varchar(15) DEFAULT NULL,
   `nit` varchar(17) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `telefono` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idProveedor`),
   UNIQUE KEY `nrc_UNIQUE` (`nrc`),
   UNIQUE KEY `nit_UNIQUE` (`nit`)
@@ -105,7 +107,7 @@ CREATE TABLE `producto` (
   `precioCompra` decimal(25,6) NOT NULL,
   `orden` int(11) NOT NULL,
   `descripcion` text,
-  `habilitado` varchar(1) NOT NULL,
+  `estado` varchar(30) NOT NULL,
   `visible` varchar(1) NOT NULL,
   `idDocumento` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`idProducto`),
@@ -117,7 +119,8 @@ CREATE TABLE `producto` (
   CONSTRAINT `FKProductoCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FKProductoDocuemnto` FOREIGN KEY (`idDocumento`) REFERENCES `documento` (`idDocumento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FKProductoImpuesto` FOREIGN KEY (`idImpuesto`) REFERENCES `impuesto` (`idImpuesto`) ON UPDATE CASCADE,
-  CONSTRAINT `FKProductoProveedor` FOREIGN KEY (`idProveedor`) REFERENCES `proveedor` (`idProveedor`) ON UPDATE CASCADE
+  CONSTRAINT `FKProductoProveedor` FOREIGN KEY (`idProveedor`) REFERENCES `proveedor` (`idProveedor`) ON UPDATE CASCADE,
+  CHECK(`estado` IN ("ACTIVO","INACTIVO","BORRADO","BLOQUEADO"))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -128,8 +131,8 @@ CREATE TABLE `cliente` (
   `primerApellido` varchar(45) NOT NULL,
   `segundoApellido` varchar(45) DEFAULT NULL,
   `genero` varchar(1) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `telefono` varchar(10) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `telefono` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -137,8 +140,9 @@ DROP TABLE IF EXISTS `tipopago`;
 CREATE TABLE `tipopago` (
   `idTipoPago` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(255) NOT NULL,
-  `habilitado` varchar(1) NOT NULL,
-  PRIMARY KEY (`idTipoPago`)
+  `estado` varchar(30) NOT NULL,
+  PRIMARY KEY (`idTipoPago`),
+  CHECK(`estado` IN ("ACTIVO","INACTIVO","BORRADO","BLOQUEADO"))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tipofactura`;
@@ -163,7 +167,7 @@ CREATE TABLE `formato` (
   `lenguaje` varchar(50) DEFAULT NULL,
   `codigoMoneda` varchar(25) DEFAULT NULL,
   `posicionMoneda` varchar(25) DEFAULT NULL,
-  `habilitado` varchar(1) DEFAULT NULL,
+  `estado` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`idFormato`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

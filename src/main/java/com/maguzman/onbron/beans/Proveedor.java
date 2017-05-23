@@ -25,11 +25,15 @@ public class Proveedor implements Serializable {
     private String nombre;
     private String nrc;// Numero de registro de contribuyente
     private String nit;
+    private String email;
+    private String telefono;
 
     public Proveedor() {
         this.nombre = "";
         this.nrc="";
         this.nit="";
+        this.email="";
+        this.telefono="";
     }
 
     public Proveedor(int idProveedor, String nombre) {
@@ -42,6 +46,8 @@ public class Proveedor implements Serializable {
         this.nombre = nombre;
         this.nrc = nrc;
         this.nit = nit;
+        this.email="";
+        this.telefono="";
     }
 
     public int getIdProveedor() {
@@ -76,6 +82,26 @@ public class Proveedor implements Serializable {
         this.nit = nit;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,6 +127,8 @@ public class Proveedor implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", nrc='" + nrc + '\'' +
                 ", nit='" + nit + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
                 '}';
     }
 }

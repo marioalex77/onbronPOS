@@ -31,7 +31,7 @@ public class Producto implements Serializable{
     @Digits(integer = 11, fraction = 0)
     private int orden;
     private String descripcion;
-    private char habilitado;
+    private String estado = Estado.ACTIVO.getEstado();
     private char visible;
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="idDocumento")
@@ -58,7 +58,7 @@ public class Producto implements Serializable{
         this.precioUnitario = 0;
         this.precioCompra = 0;
         this.orden = 0;
-        this.habilitado = 0;
+        this.estado = Estado.ACTIVO.getEstado();
         this.visible = 0;
         this.documento = null;
         this.categoria = new Categoria();
@@ -75,7 +75,7 @@ public class Producto implements Serializable{
         this.precioUnitario = precioUnitario;
         this.precioCompra = precioCompra;
         this.orden = orden;
-        this.habilitado = habilitado;
+        this.estado = Estado.ACTIVO.getEstado();
         this.visible = visible;
         this.categoria = categoria;
         this.impuesto = impuesto;
@@ -93,7 +93,7 @@ public class Producto implements Serializable{
         this.precioUnitario = precioUnitario;
         this.precioCompra = precioCompra;
         this.orden = orden;
-        this.habilitado = habilitado;
+        this.estado = Estado.ACTIVO.getEstado();
         this.visible = visible;
         this.categoria = categoria;
         this.impuesto = impuesto;
@@ -142,12 +142,15 @@ public class Producto implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public char getHabilitado() {
-        return habilitado;
+
+    public String getEstado() {
+        return estado;
     }
-    public void setHabilitado(char habilitado) {
-        this.habilitado = habilitado;
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
+
     public char getVisible() {
         return visible;
     }
@@ -211,7 +214,7 @@ public class Producto implements Serializable{
                 ", precioCompra=" + precioCompra +
                 ", orden=" + orden +
                 ", descripcion='" + descripcion + '\'' +
-                ", habilitado=" + habilitado +
+                ", estado=" + estado +
                 ", visible=" + visible +
                 ", categoria=" + categoria +
                 ", impuesto=" + impuesto +

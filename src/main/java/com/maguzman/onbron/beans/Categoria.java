@@ -54,14 +54,28 @@ public class Categoria implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Categoria)) return false;
+
+        Categoria categoria = (Categoria) o;
+
+        if (getIdCategoria() != categoria.getIdCategoria()) return false;
+        return getNombre().equals(categoria.getNombre());
+    }
+
+    @Override
     public int hashCode() {
-        // TODO Auto-generated method stub
-        return super.hashCode();
+        int result = getIdCategoria();
+        result = 31 * result + getNombre().hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return "Categoria{" +
+                "idCategoria=" + idCategoria +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }
