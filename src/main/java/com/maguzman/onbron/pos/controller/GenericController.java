@@ -17,7 +17,7 @@ public abstract class GenericController {
         return usuarioService.buscarPorCorreo(getPrincipal()).getNombres();
     }
 
-    public String getPrincipal(){
+    protected String getPrincipal(){
         String nombreUsuario = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(principal instanceof UserDetails){

@@ -1,6 +1,5 @@
 package com.maguzman.onbron.configuration;
 
-import com.maguzman.onbron.dao.HibernateTokenRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

@@ -2,11 +2,7 @@ package com.maguzman.onbron.pos.controller;
 
 import com.maguzman.onbron.beans.Proveedor;
 import com.maguzman.onbron.service.ProveedorService;
-import com.maguzman.onbron.service.UsuarioService;
-import com.maguzman.onbron.service.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
