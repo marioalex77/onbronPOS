@@ -5,6 +5,7 @@ import com.maguzman.onbron.service.FacturaItemService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Created by maguzman on 24/05/2017.
  */
+@Controller
 public class FacturaItemController extends GenericController implements InterfaceController<FacturaItem> {
     private static final Logger logger = LogManager.getLogger(CategoriaController.class);
 
@@ -34,7 +36,7 @@ public class FacturaItemController extends GenericController implements Interfac
         logger.debug("listar() : FacturaItems");
         List<FacturaItem> listaFacturaItems= facturaItemService.buscarTodos();
         model.addObject("facturaItems", listaFacturaItems);
-        model.setViewName("invoices/invoices");
+        model.setViewName("invoices/invoiceItems");
         return model;
     }
 
@@ -44,7 +46,7 @@ public class FacturaItemController extends GenericController implements Interfac
                                 BindingResult result) {
         logger.debug("guardar() : {}", facturaItem);
         if(result.hasErrors()){
-            ModelAndView model =  new ModelAndView("/invoices/add_invoiceDetail");
+            ModelAndView model =  new ModelAndView("/invoices/add_invoiceItem");
             model.addObject("facturaItem", facturaItem);
             return model;
         }
@@ -65,7 +67,7 @@ public class FacturaItemController extends GenericController implements Interfac
         logger.debug("mostrarFormulario() FacturaItem");
         FacturaItem facturaItem = new FacturaItem();
         model.addObject("facturaItem", facturaItem);
-        model.setViewName("/invoices/add_invoiceDetail");
+        model.setViewName("/invoices/add_invoiceItem");
         return model;
     }
 
@@ -84,7 +86,7 @@ public class FacturaItemController extends GenericController implements Interfac
         int facturaItemId = Integer.parseInt(request.getParameter("idFacturaItem"));
         FacturaItem facturaItem = facturaItemService.buscarPorClave(facturaItemId);
         logger.debug("Editar FacturaItem {}",facturaItem);
-        ModelAndView model = new ModelAndView("/invoices/add_invoiceDetail");
+        ModelAndView model = new ModelAndView("/invoices/add_invoiceItem");
         model.addObject("facturaItem", facturaItem);
         return model;
     }
@@ -95,7 +97,7 @@ public class FacturaItemController extends GenericController implements Interfac
         int facturaItemId = Integer.parseInt(request.getParameter("idFacturaItem"));
         FacturaItem facturaItem = facturaItemService.buscarPorClave(facturaItemId);
         logger.debug("Mostrar facturaItem {}",facturaItem);
-        ModelAndView model = new ModelAndView("/invoices/show_invoiceDetail");
+        ModelAndView model = new ModelAndView("/invoices/show_invoiceItem");
         model.addObject("facturaItem", facturaItem);
         return model;
     }

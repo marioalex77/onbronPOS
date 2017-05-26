@@ -5,6 +5,7 @@ import com.maguzman.onbron.service.DocumentoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Created by maguzman on 24/05/2017.
  */
+@Controller
 public class DocumentoController extends GenericController implements InterfaceController<Documento> {
     private static final Logger logger = LogManager.getLogger(ClienteController.class);
 

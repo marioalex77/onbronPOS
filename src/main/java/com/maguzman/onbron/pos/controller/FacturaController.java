@@ -5,6 +5,7 @@ import com.maguzman.onbron.service.FacturaService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Created by maguzman on 24/05/2017.
  */
+@Controller
 public class FacturaController extends GenericController implements InterfaceController<Factura>{
     private static final Logger logger = LogManager.getLogger(ClienteController.class);
 
@@ -37,7 +39,7 @@ public class FacturaController extends GenericController implements InterfaceCon
     public ModelAndView guardar(@ModelAttribute("factura")@Valid Factura factura, BindingResult result) {
         logger.debug("guardar() : {}", factura);
         if(result.hasErrors()){
-            ModelAndView model =  new ModelAndView("/invoice/add_invoice");
+            ModelAndView model =  new ModelAndView("/invoices/add_invoice");
             model.addObject("factura", factura);
             return model;
         }
@@ -57,7 +59,7 @@ public class FacturaController extends GenericController implements InterfaceCon
         logger.debug("mostrarFactura() Factura");
         Factura factura = new Factura();
         model.addObject("factura", factura);
-        model.setViewName("/invoice/add_invoice");
+        model.setViewName("/invoices/add_invoice");
         return model;
     }
 
@@ -74,7 +76,7 @@ public class FacturaController extends GenericController implements InterfaceCon
         int idFactura = Integer.parseInt(request.getParameter("idFactura"));
         Factura factura = facturaService.buscarPorClave(idFactura);
         logger.debug("Editar factura {}",factura);
-        ModelAndView model = new ModelAndView("/factura/add_invoice");
+        ModelAndView model = new ModelAndView("/invoices/add_invoice");
         model.addObject("factura", factura);
         return model;
     }
