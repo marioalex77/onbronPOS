@@ -45,11 +45,11 @@ public class Factura {
     @NotEmpty
     @Digits(integer = 11, fraction = 2)
     private Double total;
-    @OneToMany(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name="facturaitem",
             joinColumns = {@JoinColumn(name="idFactura")},
             inverseJoinColumns = {@JoinColumn(name="idFacturaItem")})
-    private Set<FacturaItem> facturaItemSet = new HashSet<FacturaItem>(0);
+    private Set<FacturaItem> facturaItemSet = new HashSet<FacturaItem>(0);*/
 
 
     public Factura() {
@@ -147,14 +147,14 @@ public class Factura {
         this.total = total;
     }
 
-    public Set<FacturaItem> getFacturaItemSet() {
+    /*public Set<FacturaItem> getFacturaItemSet() {
         return facturaItemSet;
     }
 
     public void setFacturaItemSet(Set<FacturaItem> facturaItemSet) {
         this.facturaItemSet = facturaItemSet;
     }
-
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -268,23 +268,26 @@ public class OnbronSecurityController {
     }
 
     @ModelAttribute("loggedinuser")
-    public String intUsuarioLogeado(){
-        Usuario loggedUser = new Usuario();
-        loggedUser = usuarioService.buscarPorCorreo(getPrincipal());
-        return loggedUser.getNombres();
+    public String UsuarioLogeado(){
+        if(getPrincipal()!=null) {
+            return usuarioService.buscarPorCorreo(getPrincipal()).getNombres();
+        }
+        else{
+            return "";
+        }
     }
 
     /**
      * This method returns the principal[user-name] of logged-in user.
      */
-    private String getPrincipal(){
+    protected String getPrincipal(){
         String nombreUsuario = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(principal instanceof UserDetails){
             nombreUsuario = ((UserDetails) principal).getUsername();
         }
         else {
-            nombreUsuario = principal.toString();
+            nombreUsuario = null;
         }
         return nombreUsuario;
     }

@@ -15,6 +15,10 @@
 <spring:url value="/usuario/agregar" var="agregarUsuario" />
 <spring:url value="/usuario" var="listarUsuario" />
 <spring:url value="/logout" var="logoutUrl" />
+<spring:url value="/proveedor/agregar" var="agregarProveedor" />
+<spring:url value="/proveedor" var="listarProveedor" />
+<spring:url value="/impuesto/agregar" var="agregarImpuesto" />
+<spring:url value="/impuesto" var="listarImpuesto" />
 
 <div class="navbar navbar-static-top navbar-inverse">
     <div class="container">
@@ -90,6 +94,20 @@
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
                                     <li><a href="${agregarCategoria}"><spring:message code="application.menu.products.addcategories"/></a></li>
+                                </sec:authorize>
+                                <li class="divider"></li>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="${listarProveedor}"><spring:message code="application.menu.products.listproviders"/></a></li>
+                                </sec:authorize>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="${agregarProveedor}"><spring:message code="application.menu.products.addproviders"/></a></li>
+                                </sec:authorize>
+                                <li class="divider"></li>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="${listarImpuesto}"><spring:message code="application.menu.products.listtaxes"/></a></li>
+                                </sec:authorize>
+                                <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                                    <li><a href="${agregarImpuesto}"><spring:message code="application.menu.products.addtaxes"/></a></li>
                                 </sec:authorize>
                             </ul>
                         </li>
