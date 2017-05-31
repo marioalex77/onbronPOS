@@ -10,7 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a20d984-bdda-4c80-b692-1c2b040d5b68" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/add_customer.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/customers.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/show_customer.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_tax.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_product.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_tax.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/add.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/edit.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/edit_categorie.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/edit_product.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/list_product.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/products.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ImpuestoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ImpuestoController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_es.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_es.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,40 +77,33 @@
       <find>dataTables.txt</find>
       <find>loggedin</find>
       <find>Cliente</find>
-      <find>provider</find>
       <find>acturaItemes</find>
       <find>factura</find>
       <find>invoice</find>
-      <find>Impuesto</find>
       <find>impuesto</find>
       <find>tax</find>
       <find>inventario</find>
       <find>products</find>
       <find>stock</find>
-      <find>categories</find>
       <find>categorias</find>
-      <find>categoria</find>
       <find>edit_categorie</find>
       <find>providers</find>
       <find>proveedor</find>
+      <find>edit_provider</find>
+      <find>categories</find>
+      <find>categoria</find>
+      <find>Categoria</find>
+      <find>tecdiary</find>
+      <find>index.php</find>
+      <find>provider</find>
+      <find>Impuesto</find>
+      <find>product</find>
+      <find>producto</find>
+      <find>Producto</find>
+      <find>Clientes</find>
+      <find>Proveedor</find>
     </findStrings>
     <replaceStrings>
-      <replace>invoice</replace>
-      <replace>acturaItems</replace>
-      <replace>invoiceDetail</replace>
-      <replace>Formato</replace>
-      <replace>formato</replace>
-      <replace>invformat</replace>
-      <replace>Impuesto</replace>
-      <replace>products</replace>
-      <replace>tax</replace>
-      <replace>Inventario</replace>
-      <replace>inventario</replace>
-      <replace>stock</replace>
-      <replace>Pago</replace>
-      <replace>pago</replace>
-      <replace>sale</replace>
-      <replace>TipoFactura</replace>
       <replace>tipoFactura</replace>
       <replace>invoices</replace>
       <replace>invType</replace>
@@ -107,7 +117,23 @@
       <replace>proveedor</replace>
       <replace>edit_provider</replace>
       <replace>taxes</replace>
+      <replace>add_tax</replace>
+      <replace>edit_tax</replace>
+      <replace>show_tax</replace>
       <replace>impuesto</replace>
+      <replace>products</replace>
+      <replace>productos</replace>
+      <replace>Impuesto</replace>
+      <replace>producto</replace>
+      <replace>add_producto</replace>
+      <replace>add_product</replace>
+      <replace>product</replace>
+      <replace>Producto</replace>
+      <replace>customer</replace>
+      <replace>cliente</replace>
+      <replace>Customer</replace>
+      <replace>Customers</replace>
+      <replace>Cliente</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\maguzman\IdeaProjects\onbronPOS</dir>
@@ -173,14 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/ClienteDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/FacturaDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/FacturaItemDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/FormatoDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/InventarioDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/PagoDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/TipoFacturaDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/implementation/TipoPagoDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/UsuarioServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/ProveedorServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/ProductoServiceImpl.java" />
@@ -205,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/TipoPagoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/GenericController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ClienteController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ImpuestoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/FormatoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/DocumentoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/InventarioController.java" />
@@ -217,13 +234,22 @@
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Factura.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/security/controller/OnbronSecurityController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/providers.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_provider.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_provider.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_es.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/taxes.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_tax.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ImpuestoController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_tax.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/products.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_provider.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_product.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_product.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_es.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/add_customer.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/customers.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/show_customer.jsp" />
       </list>
     </option>
   </component>
@@ -335,9 +361,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -410,7 +435,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
+              <option name="myItemId" value="customer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,9 +512,96 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resource Bundle 'messages'" />
+              <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbronPOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onbron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -483,11 +629,11 @@
       <recent name="E:\onbronPOS\src\main\webapp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maguzman\IdeaProjects\onbronPOS\src\main\webapp\WEB-INF\pages\customer" />
       <recent name="C:\Users\maguzman\IdeaProjects\onbronPOS\src\main\webapp\WEB-INF\pages\products" />
       <recent name="C:\Users\maguzman\IdeaProjects\onbronPOS\src\main\webapp\WEB-INF\pages\auth" />
       <recent name="C:\Users\maguzman\IdeaProjects\onbronPOS\src\main\webapp\resources\images" />
       <recent name="C:\Users\maguzman\IdeaProjects\onbronPOS\src\main\webapp\resources\media" />
-      <recent name="C:\Users\maguzman\IdeaProjects\onbronPOS\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1027,7 +1173,9 @@
       <workItem from="1495826854615" duration="4622000" />
       <workItem from="1496070918000" duration="11565000" />
       <workItem from="1496099905884" duration="122000" />
-      <workItem from="1496173420505" duration="1225000" />
+      <workItem from="1496173420505" duration="1253000" />
+      <workItem from="1496242534709" duration="9512000" />
+      <workItem from="1496260645214" duration="3631000" />
     </task>
     <task id="LOCAL-00001" summary="update 26042017 14:23">
       <created>1493238248578</created>
@@ -1246,11 +1394,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496099998738</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="update 19/05/2017 vistas empezando">
+      <created>1496185621375</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1496185621375</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303560000" />
+    <option name="totallyTimeSpent" value="316731000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1267,16 +1422,17 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753405" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32690126" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1860817" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18501702" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24888393" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5477816" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32581967" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1286,7 +1442,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2167991" sideWeight="0.50851583" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3893303" sideWeight="0.4914842" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40749148" sideWeight="0.4914842" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33711693" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1297,7 +1453,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14334472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32581967" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1374,69 +1529,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/TipoFacturaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="79" lean-forward="false" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/TipoPagoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="73" lean-forward="false" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/DocumentoServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/ClienteServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/FacturaItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/FacturaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/FormatoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/implementation/InventarioServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/service/PagoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="65" lean-forward="false" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/dao/PagoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1512,13 +1604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ImpuestoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-481">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1606,41 +1691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/security/controller/OnbronSecurityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <caret line="278" column="0" lean-forward="true" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/list_product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Producto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_product.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2104">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_categorie.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1655,24 +1705,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/auth/add_user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="60" column="42" lean-forward="false" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_provider.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="75" column="14" lean-forward="true" selection-start-line="75" selection-start-column="14" selection-end-line="75" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_provider.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="57" column="42" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1690,55 +1726,204 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/taxes.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="81" column="49" lean-forward="false" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/security/controller/OnbronSecurityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3338">
+          <caret line="259" column="4" lean-forward="false" selection-start-line="259" selection-start-column="4" selection-end-line="267" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/pos/controller/ImpuestoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1435">
+          <caret line="103" column="5" lean-forward="false" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+          <folding>
+            <element signature="e#4123#4138#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_tax.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/products.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="101" column="57" lean-forward="true" selection-start-line="101" selection-start-column="57" selection-end-line="101" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/categories.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="111" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbarPOS.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        <state relative-caret-position="17">
+          <caret line="113" column="74" lean-forward="true" selection-start-line="113" selection-start-column="74" selection-end-line="113" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_provider.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="80" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_tax.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="75" column="67" lean-forward="false" selection-start-line="75" selection-start-column="67" selection-end-line="75" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/add_product.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="142" column="22" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="142" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/show_product.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="119" column="14" lean-forward="false" selection-start-line="119" selection-start-column="14" selection-end-line="119" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Impuesto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="306">
           <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/products/taxes.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Categoria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="102" column="12" lean-forward="false" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
+          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Producto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages_es.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="257" column="86" lean-forward="true" selection-start-line="257" selection-start-column="86" selection-end-line="257" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="202" column="82" lean-forward="false" selection-start-line="202" selection-start-column="82" selection-end-line="202" selection-end-column="82" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="277" column="60" lean-forward="false" selection-start-line="277" selection-start-column="60" selection-end-line="277" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2975">
-          <caret line="175" column="67" lean-forward="false" selection-start-line="175" selection-start-column="67" selection-end-line="175" selection-end-column="67" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="280" column="86" lean-forward="true" selection-start-line="258" selection-start-column="0" selection-end-line="280" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/auth/add_user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="184" column="36" lean-forward="false" selection-start-line="184" selection-start-column="36" selection-end-line="184" selection-end-column="36" />
+        <state relative-caret-position="35">
+          <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="109" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/add_customer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="49" column="79" lean-forward="false" selection-start-line="49" selection-start-column="79" selection-end-line="49" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/customers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Genero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/customer/show_customer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="61" column="14" lean-forward="true" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/maguzman/onbron/beans/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

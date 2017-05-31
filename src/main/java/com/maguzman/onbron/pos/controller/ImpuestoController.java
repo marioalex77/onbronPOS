@@ -1,5 +1,6 @@
 package com.maguzman.onbron.pos.controller;
 
+import com.maguzman.onbron.beans.Estado;
 import com.maguzman.onbron.beans.Impuesto;
 import com.maguzman.onbron.service.ImpuestoService;
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -89,6 +91,16 @@ public class ImpuestoController extends GenericController implements InterfaceCo
         ModelAndView model = new ModelAndView("/products/show_tax");
         model.addObject("impuesto", impuesto);
         return model;
+    }
+
+    @ModelAttribute("estados")
+    public LinkedHashMap<String,String> initEstados() {
+        LinkedHashMap <String,String> estados = new LinkedHashMap<String,String>();
+        estados.put(Estado.ACTIVO.getEstado(),Estado.ACTIVO.getName());
+        estados.put(Estado.INACTIVO.getEstado(),Estado.INACTIVO.getName());
+        estados.put(Estado.BLOQUEADO.getEstado(),Estado.BLOQUEADO.getName());
+        estados.put(Estado.BORRADO.getEstado(),Estado.BLOQUEADO.getName());
+        return estados;
     }
 
     @ModelAttribute("loggedinuser")
