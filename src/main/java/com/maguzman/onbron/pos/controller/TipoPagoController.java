@@ -31,7 +31,7 @@ public class TipoPagoController extends GenericController implements InterfaceCo
         logger.debug("listar() : TipoPago");
         List<TipoPago> listaTipoPagos= tipoPagoService.buscarTodos();
         model.addObject("tipoPagos", listaTipoPagos);
-        model.setViewName("sales/paymentTypes");
+        model.setViewName("settings/paymentTypes");
         return model;
     }
 
@@ -39,7 +39,7 @@ public class TipoPagoController extends GenericController implements InterfaceCo
     public ModelAndView guardar(@ModelAttribute("tipoPago")@Valid TipoPago tipoPago, BindingResult result) {
         logger.debug("guardar() : {}", tipoPago);
         if(result.hasErrors()){
-            ModelAndView model =  new ModelAndView("/sales/add_paymentType");
+            ModelAndView model =  new ModelAndView("/settings/add_paymentType");
             model.addObject("tipoPago", tipoPago);
             return model;
         }
@@ -59,7 +59,7 @@ public class TipoPagoController extends GenericController implements InterfaceCo
         logger.debug("mostrarTipoPago() TipoPago");
         TipoPago tipoPago = new TipoPago();
         model.addObject("tipoPago", tipoPago);
-        model.setViewName("/sales/add_paymentType");
+        model.setViewName("/settings/add_paymentType");
         return model;
     }
 
@@ -76,7 +76,7 @@ public class TipoPagoController extends GenericController implements InterfaceCo
         int idTipoPago = Integer.parseInt(request.getParameter("idTipoPago"));
         TipoPago tipoPago = tipoPagoService.buscarPorClave(idTipoPago);
         logger.debug("Editar tipoPago {}",tipoPago);
-        ModelAndView model = new ModelAndView("/sales/add_paymentType");
+        ModelAndView model = new ModelAndView("/settings/add_paymentType");
         model.addObject("tipoPago", tipoPago);
         return model;
     }
@@ -86,7 +86,7 @@ public class TipoPagoController extends GenericController implements InterfaceCo
         int idTipoPago = Integer.parseInt(request.getParameter("idTipoPago"));
         TipoPago tipoPago = tipoPagoService.buscarPorClave(idTipoPago);
         logger.debug("Mostrar tipoPago {}",tipoPago);
-        ModelAndView model = new ModelAndView("/sales/show_paymentType");
+        ModelAndView model = new ModelAndView("/settings/show_paymentType");
         model.addObject("tipoPago", tipoPago);
         return model;
     }

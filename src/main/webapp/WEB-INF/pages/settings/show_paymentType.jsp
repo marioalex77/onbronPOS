@@ -4,12 +4,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title><spring:message code="show_invoicetype.title"/> | <spring:message code="application.name"/></title>
+    <title><spring:message code="show_paymenttype.title"/> | <spring:message code="application.name"/></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico'/>"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/bootstrapPOS.css'/>" type="text/css" charset="utf-8">
@@ -29,22 +28,28 @@
 <div id="wrap">
     <jsp:include page="../navbarPOS.jsp"/>
     <div class="container">
-        <h3><spring:message code="show_invoicetype.container.title"/></h3>
+        <h3><spring:message code="show_paymenttype.container.title"/></h3>
 
-        <p><spring:message code="show_invoicetype.introtext"/></p>
+        <p><spring:message code="show_paymenttype.introtext"/></p>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-xs-6">
                 <div class="form-group">
-                    <div class="control-label"><b><spring:message code="label.tipoFactura.idTipoFactura"/></b></div>
-                    <div class="control-label">${tipoFactura.idTipoFactura}</div>
+                    <div class="control-label"><b><spring:message code="label.tipoPago.idTipoPago"/></b></div>
+                    <div class="control-label">${tipoPago.idTipoPago}</div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-xs-6">
                 <div class="form-group">
-                    <div class="control-label"><b><spring:message code="label.tipoFactura.descripcion"/></b></div>
-                    <div class="control-label">${tipoFactura.descripcion}</div>
+                    <div class="control-label"><b><spring:message code="label.tipoPago.descripcion"/></b></div>
+                    <div class="control-label">${tipoPago.descripcion}</div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="control-label"><b><spring:message code="label.tipoPago.estado"/></b></div>
+                    <div class="control-label">${tipoPago.estado.getEstado()}</div>
                 </div>
             </div>
         </div>

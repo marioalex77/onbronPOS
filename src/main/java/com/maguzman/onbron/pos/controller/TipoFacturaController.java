@@ -31,7 +31,7 @@ public class TipoFacturaController extends GenericController implements Interfac
         logger.debug("listar() : TipoFactura");
         List<TipoFactura> listaTipoFacturas= tipoFacturaService.buscarTodos();
         model.addObject("tipoFacturas", listaTipoFacturas);
-        model.setViewName("invoices/invTypes");
+        model.setViewName("settings/invoiceTypes");
         return model;
     }
 
@@ -39,7 +39,7 @@ public class TipoFacturaController extends GenericController implements Interfac
     public ModelAndView guardar(@ModelAttribute("tipoFactura")@Valid TipoFactura tipoFactura, BindingResult result) {
         logger.debug("guardar() : {}", tipoFactura);
         if(result.hasErrors()){
-            ModelAndView model =  new ModelAndView("/invoices/add_invType");
+            ModelAndView model =  new ModelAndView("/settings/add_invoiceType");
             model.addObject("tipoFactura", tipoFactura);
             return model;
         }
@@ -59,7 +59,7 @@ public class TipoFacturaController extends GenericController implements Interfac
         logger.debug("mostrarTipoFactura() TipoFactura");
         TipoFactura tipoFactura = new TipoFactura();
         model.addObject("tipoFactura", tipoFactura);
-        model.setViewName("/invoices/add_invType");
+        model.setViewName("/settings/add_invoiceType");
         return model;
     }
 
@@ -76,7 +76,7 @@ public class TipoFacturaController extends GenericController implements Interfac
         int idTipoFactura = Integer.parseInt(request.getParameter("idTipoFactura"));
         TipoFactura tipoFactura = tipoFacturaService.buscarPorClave(idTipoFactura);
         logger.debug("Editar tipoFactura {}",tipoFactura);
-        ModelAndView model = new ModelAndView("/invoices/add_invType");
+        ModelAndView model = new ModelAndView("/settings/add_invoiceType");
         model.addObject("tipoFactura", tipoFactura);
         return model;
     }
@@ -86,7 +86,7 @@ public class TipoFacturaController extends GenericController implements Interfac
         int idTipoFactura = Integer.parseInt(request.getParameter("idTipoFactura"));
         TipoFactura tipoFactura = tipoFacturaService.buscarPorClave(idTipoFactura);
         logger.debug("Mostrar tipoFactura {}",tipoFactura);
-        ModelAndView model = new ModelAndView("/invoices/show_invType");
+        ModelAndView model = new ModelAndView("/settings/show_invoiceType");
         model.addObject("tipoFactura", tipoFactura);
         return model;
     }

@@ -2,8 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%--
-  Created by IntelliJ IDEA.
-  User: maguzman
+  Created by Mario Alexander Guzmán
   Date: 03/05/2017
   Time: 09:57 AM
   To change this template use File | Settings | File Templates.
@@ -23,6 +22,10 @@
 <spring:url value="/producto" var="listarProducto" />
 <spring:url value="/cliente/agregar" var="agregarCliente" />
 <spring:url value="/cliente" var="listarCliente" />
+<spring:url value="/tipoFactura/agregar" var="agregarTipoFactura" />
+<spring:url value="/tipoFactura" var="listarTipoFactura" />
+<spring:url value="/tipoPago/agregar" var="agregarTipoPago" />
+<spring:url value="/tipoPago" var="listarTipoPago" />
 
 <div class="navbar navbar-static-top navbar-inverse">
     <div class="container">
@@ -52,16 +55,39 @@
                             </a>
                         </li>
                     </ul>
-                <li>
                 </li>
+                <li>
                     <a href="#settings" class="tip" data-placement="right" title="Home">
                         <i class="glyphicon glyphicon-home"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="#sistemsettings" class="tip" data-placement="right" title="Settings">
+                <li  class="dropdown">
+                    <a class="dropdown-toggle tip" data-toggle="dropdown" href="#" data-placement="right" title="<spring:message code="application.menu.settings.settings"/>">
                         <i class="glyphicon glyphicon-cog"></i>
                     </a>
+                    <ul class="dropdown-menu" style="min-width: 60px;" role="menu" aria-labelledby="dLabel">
+                        <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                            <li>
+                                <a href="${listarTipoFactura}"><spring:message code="application.menu.settings.listinvoicetype"/></a>
+                            </li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                            <li>
+                                <a href="${agregarTipoFactura}"><spring:message code="application.menu.settings.addinvoicetype"/></a>
+                            </li>
+                        </sec:authorize>
+                        <li class="divider"></li>
+                        <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                            <li>
+                                <a href="${listarTipoPago}"><spring:message code="application.menu.settings.listpaymenttype"/></a>
+                            </li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ADMIN') or hasRole('SUPER')">
+                            <li>
+                                <a href="${agregarTipoPago}"><spring:message code="application.menu.settings.addpaymenttype"/></a>
+                            </li>
+                        </sec:authorize>
+                    </ul>
                 </li>
                 <li>
                     <a href="#pos" class="tip" data-placement="right" title="POS Sale">
@@ -73,7 +99,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, ${loggedinuser}! <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#changePassword">Change Password</a></li>
+                        <li><a href="#">Change Password</a></li>
                         <li><a href="${logoutUrl}"><spring:message code="application.menu.logout"/></a></li>
                     </ul>
                 </li>

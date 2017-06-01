@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <!--base href="http://demo.tecdiary.my/spos/" /-->
-<title><spring:message code="invoicetypes.title"/> | <spring:message code="application.name"/></title>
+<title><spring:message code="paymenttypes.title"/> | <spring:message code="application.name"/></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico'/>"/>
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrapPOS.css'/>" type="text/css" charset="utf-8">
@@ -60,36 +60,36 @@ $(document).ready(function() {
                     });
                 } );
             </script>
-            <h3><spring:message code="invoicetypes.container.title"/> - <spring:message code="application.name"/></h3>
-            <p class="introtext"><spring:message code="invoicetypes.container.introtext"/></p>
-            <spring:url value="/tipoFactura/agregar" var="agregarUrl" />
+            <h3><spring:message code="paymenttypes.container.title"/> - <spring:message code="application.name"/></h3>
+            <p class="introtext"><spring:message code="paymenttypes.container.introtext"/></p>
+            <spring:url value="/tipoPago/agregar" var="agregarUrl" />
             <table id="fileData" class="table table-striped table-bordered table-condensed table-hover" style="margin-bottom:5px;">
                 <thead>
                     <tr class="active">
-                        <th style="width:55px;"><spring:message code="label.tipoFactura.idTipoFactura"/></th>
-                        <th><spring:message code="label.tipoFactura.descripcion"/></th>
-                        <th style="width:45px;"><spring:message code="invoicetypes.container.table.encabezado.actions"/></th>
+                        <th style="width:55px;"><spring:message code="label.tipoPago.idTipoPago"/></th>
+                        <th><spring:message code="label.tipoPago.descripcion"/></th>
+                        <th style="width:45px;"><spring:message code="paymenttypes.container.table.encabezado.actions"/></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="tipoFactura" items="${tipoFacturas}">
-                        <spring:url value="/tipoFactura/mostrar?idTipoFactura=${tipoFactura.idTipoFactura}" var="verUrl" />
-                        <spring:url value="/tipoFactura/borrar?idTipoFactura=${tipoFactura.idTipoFactura}" var="borrarUrl" />
-                        <spring:url value="/tipoFactura/editar?idTipoFactura=${tipoFactura.idTipoFactura}" var="editarUrl" />
+                    <c:forEach var="tipoPago" items="${tipoPagos}">
+                        <spring:url value="/tipoPago/mostrar?idTipoPago=${tipoPago.idTipoPago}" var="verUrl" />
+                        <spring:url value="/tipoPago/borrar?idTipoPago=${tipoPago.idTipoPago}" var="borrarUrl" />
+                        <spring:url value="/tipoPago/editar?idTipoPago=${tipoPago.idTipoPago}" var="editarUrl" />
                         <tr>
-                        <td>${tipoFactura.idTipoFactura}</td>
-                        <td>${tipoFactura.descripcion}</td>
+                        <td>${tipoPago.idTipoPago}</td>
+                        <td>${tipoPago.descripcion}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="${verUrl}" class="tip btn btn-info btn-xs" title="<spring:message code='invoicetypes.action.show'/>">
+                                <a href="${verUrl}" class="tip btn btn-info btn-xs" title="<spring:message code='paymenttypes.action.show'/>">
                                     <i class="glyphicon glyphicon-eye-open"></i>
                                 </a>
-                                <a href="${editarUrl}" class="tip btn btn-warning btn-xs" title="<spring:message code='invoicetypes.action.update'/>">
+                                <a href="${editarUrl}" class="tip btn btn-warning btn-xs" title="<spring:message code='paymenttypes.action.update'/>">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>
                                 <a href="${borrarUrl}"
-                                   onClick="return confirm('<spring:message code="invoicetypes.delete.confirm"/>')"
-                                   class="tip btn btn-danger btn-xs" title="<spring:message code='invoicetypes.action.delete'/>">
+                                   onClick="return confirm('<spring:message code="paymenttypes.delete.confirm"/>')"
+                                   class="tip btn btn-danger btn-xs" title="<spring:message code='paymenttypes.action.delete'/>">
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </a>
                             </div>
@@ -98,7 +98,7 @@ $(document).ready(function() {
                     </c:forEach>
                 </tbody>
             </table>
-            <p><a href="${agregarUrl}" class="btn btn-primary btn-sm"><spring:message code="invoicetypes.container.button.value"/></a></p>
+            <p><a href="${agregarUrl}" class="btn btn-primary btn-sm"><spring:message code="paymenttypes.container.button.value"/></a></p>
         </div>
         <jsp:include page="../footerPOS.jsp"/>
     </div>

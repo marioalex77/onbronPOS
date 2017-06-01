@@ -10,11 +10,11 @@
     <head>
         <meta charset="utf-8">
         <c:choose>
-            <c:when test="${tipoFactura.idTipoFactura == 0}">
-                <title><spring:message code="add_invoicetype.title"/> | <spring:message code="application.name"/></title>
+            <c:when test="${tipoPago.idTipoPago == 0}">
+                <title><spring:message code="add_paymenttype.title"/> | <spring:message code="application.name"/></title>
             </c:when>
             <c:otherwise>
-                <title><spring:message code="edit_invoicetype.title"/> | <spring:message code="application.name"/></title>
+                <title><spring:message code="edit_paymenttype.title"/> | <spring:message code="application.name"/></title>
             </c:otherwise>
         </c:choose>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,39 +37,46 @@
             <jsp:include page="../navbarPOS.jsp"/>
             <div class="container">
                 <c:choose>
-                    <c:when test="${tipoFactura.idTipoFactura == 0}">
-                        <h3><spring:message code="add_invoicetype.container.title"/></h3>
+                    <c:when test="${tipoPago.idTipoPago == 0}">
+                        <h3><spring:message code="add_paymenttype.container.title"/></h3>
                     </c:when>
                     <c:otherwise>
-                        <h3><spring:message code="edit_invoicetype.container.title"/></h3>
+                        <h3><spring:message code="edit_paymenttype.container.title"/></h3>
                     </c:otherwise>
                 </c:choose>
 
-                <p><spring:message code="add_invoicetype.introtext"/></p>
-                <spring:url value="/tipoFactura" var="actionUrl" />
-                <form:form action="${actionUrl}" method="POST" modelAttribute="tipoFactura">
+                <p><spring:message code="add_paymenttype.introtext"/></p>
+                <spring:url value="/tipoPago" var="actionUrl" />
+                <form:form action="${actionUrl}" method="POST" modelAttribute="tipoPago">
                     <div style="display:none">
                         <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
                     </div>
                     <div style="display:none">
-                        <form:input type="hidden" path="idTipoFactura"/>
+                        <form:input type="hidden" path="idTipoPago"/>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-xs-6">
                             <div class="form-group">
-                                <label for="descripcion" class="control-label"><spring:message code="label.tipoFactura.descripcion"/></label>
+                                <label for="descripcion" class="control-label"><spring:message code="label.tipoPago.descripcion"/></label>
                                 <form:input path="descripcion" id="descripcion" class="form-control input-sm"/>
                                 <form:errors path="descripcion" cssClass="error"/>
-                                <div class="inline-help"><spring:message code="inlinehelp.tipoFactura.descripcion"/></div>
+                                <div class="inline-help"><spring:message code="inlinehelp.tipoPago.descripcion"/></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="estado" class="control-label"><spring:message code="label.tipoPago.estado"/></label>
+                                <form:select path="estado" items="${estados}"  />
+                                <form:errors path="estado" cssClass="error"/>
                             </div>
                         </div>
                     </div>
                     <c:choose>
-                        <c:when test="${tipoFactura.idTipoFactura == 0}">
-                            <input type="submit" name="submit" value="<spring:message code='add_invoicetype.submit'/>" class="btn btn-primary btn-sm"/>
+                        <c:when test="${tipoPago.idTipoPago == 0}">
+                            <input type="submit" name="submit" value="<spring:message code='add_paymenttype.submit'/>" class="btn btn-primary btn-sm"/>
                         </c:when>
                         <c:otherwise>
-                            <input type="submit" name="submit" value="<spring:message code='edit_invoicetype.submit'/>" class="btn btn-primary btn-sm" />
+                            <input type="submit" name="submit" value="<spring:message code='edit_paymenttype.submit'/>" class="btn btn-primary btn-sm" />
                         </c:otherwise>
                     </c:choose>
                 </form:form>
