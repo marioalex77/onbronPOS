@@ -26,7 +26,7 @@
         <javax.validation.version>1.1.0.Final</javax.validation.version>
         <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
         <java.version>1.8</java.version>
-
+        <jackson.version>2.8.8</jackson.version>
     </properties>
 
     <dependencies>
@@ -206,6 +206,18 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>onbronPOS</finalName>

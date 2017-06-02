@@ -412,41 +412,56 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <label class="control-label" for="code">Name</label>
-                                <input type="text" name="name" value="" class="form-control input-sm" id="cname" />
+                                <label for="nombres" class="control-label"><spring:message code="label.cliente.nombres"/></label>
+                                <form:input path="nombres" id="cnames" class="form-control input-sm"/>
+                                <form:errors path="nombres" cssClass="error"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <label class="control-label" for="cf1">Custom Field 1</label>
-                                <input type="text" name="cf1" value="" class="form-control input-sm" id="cf1" />
+                                <label for="primerApellido" class="control-label"><spring:message code="label.cliente.primerApellido"/></label>
+                                <form:input path="primerApellido" id="clastname" class="form-control input-sm"/>
+                                <form:errors path="primerApellido" cssClass="error"/>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <label class="control-label" for="cf2">Custom Field 2</label>
-                                <input type="text" name="cf2" value="" class="form-control input-sm" id="cf2" />
+                                <label for="segundoApellido" class="control-label"><spring:message code="label.cliente.segundoApellido"/></label>
+                                <form:input path="segundoApellido" id="cmotherslastname" class="form-control input-sm"/>
+                                <form:errors path="segundoApellido" cssClass="error"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <label class="control-label" for="cemail">Email Address</label>
-                                <input type="text" name="email" value="" class="form-control input-sm" id="cemail"/>
+                                <label for="genero" class="control-label"><spring:message code="label.cliente.genero"/></label>
+                                <form:radiobuttons path="genero" items="${generos}" id="cgender"  />
+                                <form:errors path="genero" cssClass="error"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="email" class="control-label"><spring:message code="label.cliente.email"/></label>
+                                <form:input type="email" path="email" id="cemail" class="form-control input-sm"/>
+                                <form:errors path="email" cssClass="error"/>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <label class="control-label" for="phone">Phone</label>
-                                <input type="text" name="phone" value="" class="form-control input-sm" id="cphone" />
+                                <label for="telefono" class="control-label"><spring:message code="label.cliente.telefono"/></label>
+                                <form:input  path="telefono" id="cphone" class="form-control input-sm"/>
+                                <form:errors path="telefono" cssClass="error"/>
                             </div>
                         </div>
                     </div>
                     <input type="hidden" id="show_m" value="">
                 </div>
+                <spring:url value="/cliente/" var="add_customer_url"/>
                 <div class="modal-footer" style="margin-top:0;">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <button class="btn btn-success" id="add-customer">Add Customer</button>
@@ -523,6 +538,7 @@
         $(document).ready(function(){
             add_row();
             loadProducts();
+            //Cuando se hace click en el lapiz de agregar descuento
             $("#add_discount").click(function(){
                 var dval=$('#discount_val').val();
                 bootbox.dialog({
@@ -574,7 +590,9 @@
                         }
                     }
                 });
-                return false});
+                return false
+            });
+            //Cuando se hace click en el lapiz de agregar impuesto
             $("#add_tax").click(function(){
                 var tval=$('#tax_val').val();
                 bootbox.dialog({
@@ -627,18 +645,20 @@
                 });
                 return false
             });
+            //Cuando se hace click en el cuadro de dialogo modal boton Add Customer
             $("#add-customer").click(function(){
                 var newCustomer=new Array();
-                newCustomer[0]=$('#cname').val();
-                newCustomer[1]=$('#cemail').val();
-                newCustomer[2]=$('#cphone').val();
-                newCustomer[3]=$('#cf1').val();
-                newCustomer[4]=$('#cf2').val();
+                newCustomer[0]=$('#cnames').val();
+                newCustomer[1]=$('#clastname').val();
+                newCustomer[2]=$('#cmotherslastname').val();
+                newCustomer[3]=$('#gender').val();
+                newCustomer[4]=$('#cemail').val();
+                newCustomer[5]=$('#cphone').val();
                 $.ajax({
                     type:"post",
                     async:false,
-                    url:"index.php?module=pos&view=add_customer",
-                    data: {csrf_pos:"b7e583082aa77179d11972373f01aeb0",data:newCustomer},
+                    url:"${add_customer_url}",
+                    data: {csrf_pos:"${_csrf.token}",data:newCustomer},
                     dataType:"json",
                     success:function(data){
                         result=data.msg;
@@ -654,11 +674,12 @@
                 if(result=='Customer Successfully Added'){
                     $('.inv_cus_con').html(cu);
                     $('#customerModal').modal('hide');
-                    $('#cname').val('');
+                    $('#cnames').val('');
+                    $('#clastname').val('');
+                    $('#cmotherslastname').val('');
+                    $('#cgender').val('');
                     $('#cemail').val('');
                     $('#cPhone').val('');
-                    $('#cf1').val('');
-                    $('#cf2').val('');
                     bootbox.alert('Customer Successfully Added')
                 }else{
                     var error=$('<div class=\"alert alert-danger\"></div>');
@@ -1212,7 +1233,8 @@
                     }else{
                         pName=prod_name
                     }
-                    var rcount=count;count=rt;
+                    var rcount=count;
+count=rt;
                     var newTr=$('<tr id="row_'+count+last+'"></tr>');
                     newTr.html('<td class="satu" style="width: 9%;">' +
                         '<button class="del_row" id="del-'+count+last+'" value="'+item_price+'">' +
@@ -1238,7 +1260,7 @@
                         var g_total=(total+parseFloat($('#ts_con').text()))-parseFloat(ds);
                         $("#ds_con").text(parseFloat(ds).toFixed(2))
                     }
-                    var ts=$('#tax_val').val();0
+                    var ts=$('#tax_val').val();
                     if(ts.indexOf("%")!==-1){
                         var pts=ts.split("%");
                         var tax=(total*parseFloat(pts[0]))/100;
@@ -1252,8 +1274,337 @@
                     count=rcount;
                     $("#total-payable").text(grand_total);
                     $("#total").text(current);
-                    $("#count").text(count);count++;rt++;an++;var divElement=document.getElementById('protbldiv');divElement.scrollTop=divElement.scrollHeight;$('#loading').hide()})}$('#scancode').keydown(function(e){if(e.keyCode==13){if(count>=1000){bootbox.alert("You have reached the quanrity limit 999.");return false}if(an>=51){bootbox.alert("Max Allowed Reached! Please add payment for this and open new bill for all next items. Thank you!");$('#loading').hide();var divElement=document.getElementById('protbldiv');divElement.scrollTop=divElement.scrollHeight;return false}$('#loading').show();var v=$(this).val();$.ajax({type:"get",async:false,url:"index.php?module=pos&view=scan_product",data:{code:v},dataType:"json",success:function(data){if(data==null){bootbox.alert('Request Failed, Please check your code and try again!');item_price=false}else{item_price=parseFloat(data.item_price).toFixed(2);sproduct_name=data.product_name;slast=data.last}},error:function(){bootbox.alert('Request Failed, Please check your code and try again!');item_price=false}});if(item_price==false){$(this).val('');$('#loading').hide();return false}if(sproduct_name.length>13){pName=sproduct_name.substring(0,13)+'..'}else{pName=sproduct_name}var rcount=count;count=rt;var newTr=$('<tr id="row_'+count+slast+'"></tr>');newTr.html('<td class="satu" style="width: 9%;"><button class="del_row" id="del-'+count+slast+'" value="'+item_price+'"><i class="glyphicon glyphicon-remove-circle"></i></button></td><td style="width: 53%;"><input type="hidden" class="code" name="product'+count+'" value="'+sproduct_name+'" id="product-'+count+slast+'"><button type="button" class="btn btn-warning btn-block btn-xs prod_name tip text-left" data-name="'+sproduct_name+'" id="'+count+slast+'">'+pName+' @ '+item_price+'</button><span class="printspan">'+sproduct_name+'</span></td><td style="width: 12%; text-align:center;"><input class="keyboard nkb-input" name="quantity'+count+'" type="text" value="1" id="quantity-'+count+slast+'" onclick="this.select();" autocomplete="off"></td><td style="width: 26%;" class="text-right"><input type="hidden" class="price" name="price'+count+'" value="'+item_price+'" id="price-'+count+slast+'"><span id="price_'+count+slast+'">'+item_price+'</span></td>');newTr.appendTo("#saletbl");total+=parseFloat(item_price);current=parseFloat(total).toFixed(2);var ds=$('#discount_val').val();if(ds.indexOf("%")!==-1){var pds=ds.split("%");var discount=(total*parseFloat(pds[0]))/100;var g_total=(total+parseFloat($('#ts_con').text()))-discount;$("#ds_con").text(discount.toFixed(2))}else{var g_total=(total+parseFloat($('#ts_con').text()))-parseFloat(ds);$("#ds_con").text(parseFloat(ds).toFixed(2))}var ts=$('#tax_val').val();if(ts.indexOf("%")!==-1){var pts=ts.split("%");var tax=(total*parseFloat(pts[0]))/100;var g_total=(total+tax)-parseFloat($('#ds_con').text());$("#ts_con").text(tax.toFixed(2))}else{var g_total=(total+parseFloat(ts))-parseFloat($('#ds_con').text());$("#ts_con").text(parseFloat(ts).toFixed(2))}grand_total=parseFloat(g_total).toFixed(2);count=rcount;$("#total-payable").text(grand_total);$("#total").text(current);$("#count").text(count);count++;rt++;an++;var divElement=document.getElementById('protbldiv');divElement.scrollTop=divElement.scrollHeight;$(this).val('');$('#loading').hide();e.preventDefault();return false}});$("#cancel").click(function(){bootbox.confirm("Are you sure to canncel the sale?",function(result){if(result==true){$("#saletbl").empty();count=1,total=0,tax_value=0,an=1;$("#ds_con").text('0');$('#ts_con').text('0');$("#total-payable").text('0.00');$("#total").text('0.00');$("#count").text(count-1)}})});$("#payment").click(function(){$("#pay").empty();var g_total=(total+parseFloat($('#ts_con').text()))-parseFloat($('#ds_con').text());twt=parseFloat(g_total).toFixed(2);count=count-1;if(isNaN(twt)||twt=='0.00'){bootbox.alert('Please add product to sale first');count=count+1;return false}twt=parseFloat(twt).toFixed(2);$('#twt').text(twt);$('#fcount').text(count);$('#payModal').modal();count=count+1;$('#total_item').val(count);$('.pcustomer').change(function(){$('#customer').val($(this).val())});$('#paid-amount').change(function(){$('#paid_val').val($(this).val())});$('#pcc').change(function(){$('#cc_no_val').val($(this).val())});$('#pcc_holder').change(function(){$('#cc_holder_val').val($(this).val())});$('#cheque_no').change(function(){$('#cheque_no_val').val($(this).val())});$("#paid_by").change(function(){var p_val=$(this).val();$('#rpaidby').val(p_val);if(p_val=='cash'){$('.pcheque').hide();$('.pcc').hide();$('.pcash').show();$('input[id^="paid-amount"]').keydown(function(e){paid=$(this).val();if(e.keyCode==13){if(paid<total){bootbox.alert('Paid amount is less than payable amount');return false}$("#balance").empty();var balance=paid-twt;balance=parseFloat(balance).toFixed(2);$("#balance").append(balance);e.preventDefault();return false}})}else if(p_val=='CC'){$('.pcheque').hide();$('.pcash').hide();$('.pcc').show()}else if(p_val=='Cheque'){$('.pcc').hide();$('.pcash').hide();$('.pcheque').show()}else{$('.pcheque').hide();$('.pcc').hide();$('.pcash').hide()}});if(KB==1){$('#paid-amount, kb-input').keyboard({restrictInput:true,preventPaste:true,autoAccept:true,alwaysOpen:false,openOn:'click',layout:'costom',display:{'a':'\u2714:Accept (Shift-Enter)','accept':'Accept:Accept (Shift-Enter)','b':'\u2190:Backspace','bksp':'Bksp:Backspace','c':'\u2716:Cancel (Esc)','cancel':'Cancel:Cancel (Esc)','clear':'C:Clear'},position:{of:null,my:'center top',at:'center top',at2:'center bottom'},usePreview:false,customLayout:{'default':['1 2 3 {clear}','4 5 6 .','7 8 9 0','{accept} {cancel}']},beforeClose:function(e,keyboard,el,accepted){var paid=parseFloat(el.value);if(paid<twt){bootbox.alert('Paid amount is less than payable amount');$(this).val('');return false}$("#balance").empty();var balance=paid-twt;balance=parseFloat(balance).toFixed(2);$("#balance").append(balance)}})}else{$("#payModal").on("change",'#paid-amount',function(){var paid=parseFloat($(this).val());if(paid<twt){bootbox.alert('Paid amount is less than payable amount');$(this).val('');return false}$("#balance").empty();var balance=paid-twt;balance=parseFloat(balance).toFixed(2);$("#balance").append(balance)})}$('#submit-sale').click(function(){$('#submit').trigger('click')})});$('#hold').click(function(){if(count<=1){bootbox.alert('Plesae add product before saving bill');return false}suspend=$('<span></span>');suspend.html('<input type="hidden" name="suspend" value="yes" />');suspend.appendTo("#hidesuspend");$('#total_item').val(count);$('#susModal').modal();$('.pcustomer').change(function(){$('#customer').val($(this).val())});$('#hold_ref_v').change(function(){$('#hold_ref').val($(this).val())});$('#submit-hold').click(function(){if($('#hold_ref_v').val()!=''){$('#submit').trigger('click')}else{bootbox.alert('Please type the hold bill referebce');return false}})});});if(DTIME){function sivamtime(){now=new Date();var month_names=new Array();month_names[month_names.length]="January";month_names[month_names.length]="February";month_names[month_names.length]="March";month_names[month_names.length]="April";month_names[month_names.length]="May";month_names[month_names.length]="June";month_names[month_names.length]="July";month_names[month_names.length]="August";month_names[month_names.length]="September";month_names[month_names.length]="October";month_names[month_names.length]="November";month_names[month_names.length]="December";var day_names=new Array();day_names[day_names.length]="Sunday";day_names[day_names.length]="Monday";day_names[day_names.length]="Tuesday";day_names[day_names.length]="Wednesday";day_names[day_names.length]="Thursday";day_names[day_names.length]="Friday";day_names[day_names.length]="Saturday";hour=now.getHours();min=now.getMinutes();sec=now.getSeconds();if(min<=9){min="0"+min}if(sec<=9){sec="0"+sec}if(hour>12){hour=hour-12;add="PM"}else{hour=hour;add="AM"}if(hour==12){add="PM"}time=day_names[now.getDay()]+", "+now.getDate()+" "+month_names[now.getMonth()]+" "+now.getFullYear()+", "+((hour<=9)?"0"+hour:hour)+":"+min+":"+sec+" "+add;if(document.getElementById){document.getElementById('cur-time').innerHTML=time}else if(document.layers){document.layers.theTime.document.write(time);document.layers.theTime.document.close()}setTimeout("sivamtime()",1000)}window.onload=sivamtime}
-
-</script>
+                    $("#count").text(count);
+                    count++;
+                    rt++;
+                    an++;
+                    var divElement=document.getElementById('protbldiv');
+                    divElement.scrollTop=divElement.scrollHeight;
+                    $('#loading').hide()
+                })
+            }
+            $('#scancode').keydown(function(e){
+                if(e.keyCode==13){
+                    if(count>=1000){
+                        bootbox.alert("You have reached the quanrity limit 999.");
+                        return false
+                    }
+                    if(an>=51){
+                        bootbox.alert("Max Allowed Reached! Please add payment for this and open new bill for all next items. Thank you!");
+                        $('#loading').hide();
+                        var divElement=document.getElementById('protbldiv');
+                        divElement.scrollTop=divElement.scrollHeight;
+                        return false
+                    }
+                    $('#loading').show();
+                    var v=$(this).val();
+                    $.ajax({
+                        type:"get",
+                        async:false,
+                        url:"index.php?module=pos&view=scan_product",
+                        data:{code:v},
+                        dataType:"json",
+                        success:function(data){
+                            if(data==null){
+                                bootbox.alert('Request Failed, Please check your code and try again!');
+                                item_price=false
+                            }else{
+                                item_price=parseFloat(data.item_price).toFixed(2);
+                                sproduct_name=data.product_name;
+                                slast=data.last
+                            }
+                        },
+                        error:function(){
+                            bootbox.alert('Request Failed, Please check your code and try again!');
+                            item_price=false
+                        }
+                    });
+                    if(item_price==false){
+                        $(this).val('');
+                        $('#loading').hide();
+                        return false
+                    }
+                    if(sproduct_name.length>13){
+                        pName=sproduct_name.substring(0,13)+'..'
+                    }else{
+                        pName=sproduct_name
+                    }
+                    var rcount=count;
+                    count=rt;
+                    var newTr=$('<tr id="row_'+count+slast+'"></tr>');
+                    newTr.html('<td class="satu" style="width: 9%;"><button class="del_row" id="del-'+count+slast+
+                        '" value="'+item_price+'"><i class="glyphicon glyphicon-remove-circle"></i></button></td>' +
+                        '<td style="width: 53%;"><input type="hidden" class="code" name="product'+count+'" value="'+
+                        sproduct_name+'" id="product-'+count+slast+'"><button type="button" ' +
+                        'class="btn btn-warning btn-block btn-xs prod_name tip text-left" data-name="'+
+                        sproduct_name+'" id="'+count+slast+'">'+pName+' @ '+item_price+'</button><span class="printspan">'+
+                        sproduct_name+'</span></td><td style="width: 12%; text-align:center;">' +
+                        '<input class="keyboard nkb-input" name="quantity'+count+'" type="text" value="1" id="quantity-'+count+
+                        slast+'" onclick="this.select();" autocomplete="off"></td><td style="width: 26%;" class="text-right">' +
+                        '<input type="hidden" class="price" name="price'+count+'" value="'+item_price+'" id="price-'+count+slast+
+                        '"><span id="price_'+count+slast+'">'+item_price+'</span></td>');
+                    newTr.appendTo("#saletbl");
+                    total+=parseFloat(item_price);
+                    current=parseFloat(total).toFixed(2);
+                    var ds=$('#discount_val').val();
+                    if(ds.indexOf("%")!==-1){
+                        var pds=ds.split("%");
+                        var discount=(total*parseFloat(pds[0]))/100;
+                        var g_total=(total+parseFloat($('#ts_con').text()))-discount;
+                        $("#ds_con").text(discount.toFixed(2))
+                    }else{
+                        var g_total=(total+parseFloat($('#ts_con').text()))-parseFloat(ds);
+                        $("#ds_con").text(parseFloat(ds).toFixed(2))
+                    }
+                    var ts=$('#tax_val').val();
+                    if(ts.indexOf("%")!==-1){
+                        var pts=ts.split("%");
+                        var tax=(total*parseFloat(pts[0]))/100;
+                        var g_total=(total+tax)-parseFloat($('#ds_con').text());
+                        $("#ts_con").text(tax.toFixed(2))
+                    }else{
+                        var g_total=(total+parseFloat(ts))-parseFloat($('#ds_con').text());
+                        $("#ts_con").text(parseFloat(ts).toFixed(2))
+                    }
+                    grand_total=parseFloat(g_total).toFixed(2);
+                    count=rcount;
+                    $("#total-payable").text(grand_total);
+                    $("#total").text(current);
+                    $("#count").text(count);
+                    count++;
+                    rt++;
+                    an++;
+                    var divElement=document.getElementById('protbldiv');
+                    divElement.scrollTop=divElement.scrollHeight;
+                    $(this).val('');
+                    $('#loading').hide();
+                    e.preventDefault();
+                    return false
+                }
+            });
+            $("#cancel").click(function(){
+                bootbox.confirm("Are you sure to canncel the sale?",function(result){
+                    if(result==true){
+                        $("#saletbl").empty();
+                        count=1,total=0,tax_value=0,an=1;
+                        $("#ds_con").text('0');
+                        $('#ts_con').text('0');
+                        $("#total-payable").text('0.00');
+                        $("#total").text('0.00');
+                        $("#count").text(count-1)
+                    }
+                })
+            });
+            $("#payment").click(function(){
+                $("#pay").empty();
+                var g_total=(total+parseFloat($('#ts_con').text()))-parseFloat($('#ds_con').text());
+                twt=parseFloat(g_total).toFixed(2);
+                count=count-1;
+                if(isNaN(twt)||twt=='0.00'){
+                    bootbox.alert('Please add product to sale first');
+                    count=count+1;
+                    return false
+                }
+                twt=parseFloat(twt).toFixed(2);
+                $('#twt').text(twt);
+                $('#fcount').text(count);
+                $('#payModal').modal();
+                count=count+1;
+                $('#total_item').val(count);
+                $('.pcustomer').change(function(){
+                    $('#customer').val($(this).val())
+                });
+                $('#paid-amount').change(function(){
+                    $('#paid_val').val($(this).val())
+                });
+                $('#pcc').change(function(){
+                    $('#cc_no_val').val($(this).val())
+                });
+                $('#pcc_holder').change(function(){
+                    $('#cc_holder_val').val($(this).val())
+                });
+                $('#cheque_no').change(function(){
+                    $('#cheque_no_val').val($(this).val())
+                });
+                $("#paid_by").change(function(){
+                    var p_val=$(this).val();
+                    $('#rpaidby').val(p_val);
+                    if(p_val=='cash'){
+                        $('.pcheque').hide();
+                        $('.pcc').hide();
+                        $('.pcash').show();
+                        $('input[id^="paid-amount"]').keydown(function(e){
+                            paid=$(this).val();
+                            if(e.keyCode==13){
+                                if(paid<total){
+                                    bootbox.alert('Paid amount is less than payable amount');
+                                    return false
+                                }
+                                $("#balance").empty();
+                                var balance=paid-twt;
+                                balance=parseFloat(balance).toFixed(2);
+                                $("#balance").append(balance);
+                                e.preventDefault();
+                                return false
+                            }
+                        })
+                    }
+                    else if(p_val=='CC'){
+                        $('.pcheque').hide();
+                        $('.pcash').hide();
+                        $('.pcc').show()
+                    }
+                    else if(p_val=='Cheque'){
+                        $('.pcc').hide();
+                        $('.pcash').hide();
+                        $('.pcheque').show()
+                    }else{
+                        $('.pcheque').hide();
+                        $('.pcc').hide();
+                        $('.pcash').hide()
+                    }
+                });
+                if(KB==1){
+                    $('#paid-amount, kb-input').keyboard({
+                        restrictInput:true,
+                        preventPaste:true,
+                        autoAccept:true,
+                        alwaysOpen:false,
+                        openOn:'click',
+                        layout:'costom',
+                        display:{
+                            'a':'\u2714:Accept (Shift-Enter)',
+                            'accept':'Accept:Accept (Shift-Enter)',
+                            'b':'\u2190:Backspace',
+                            'bksp':'Bksp:Backspace',
+                            'c':'\u2716:Cancel (Esc)',
+                            'cancel':'Cancel:Cancel (Esc)',
+                            'clear':'C:Clear'
+                        },
+                        position:{
+                            of:null,
+                            my:'center top',
+                            at:'center top',
+                            at2:'center bottom'
+                        },
+                        usePreview:false,
+                        customLayout:{
+                            'default': ['1 2 3 {clear}','4 5 6 .','7 8 9 0','{accept} {cancel}']
+                        },
+                        beforeClose:function(e,keyboard,el,accepted){
+                            var paid=parseFloat(el.value);
+                            if(paid<twt){
+                                bootbox.alert('Paid amount is less than payable amount');
+                                $(this).val('');
+                                return false
+                            }
+                            $("#balance").empty();
+                            var balance=paid-twt;
+                            balance=parseFloat(balance).toFixed(2);
+                            $("#balance").append(balance)                                                                                                        }
+                    })
+                }else{
+                      $("#payModal").on("change",'#paid-amount',function(){
+                          var paid=parseFloat($(this).val());
+                          if(paid<twt){
+                              bootbox.alert('Paid amount is less than payable amount');
+                              $(this).val('');
+                              return false
+                          }
+                          $("#balance").empty();
+                          var balance=paid-twt;
+                          balance=parseFloat(balance).toFixed(2);
+                          $("#balance").append(balance)
+                      })
+                }
+                $('#submit-sale').click(function(){
+                    $('#submit').trigger('click')
+                })
+            });
+            $('#hold').click(function(){
+                if(count<=1){
+                    bootbox.alert('Plesae add product before saving bill');
+                    return false
+                }
+                suspend=$('<span></span>');
+                suspend.html('<input type="hidden" name="suspend" value="yes" />');
+                suspend.appendTo("#hidesuspend");
+                $('#total_item').val(count);
+                $('#susModal').modal();
+                $('.pcustomer').change(function(){
+                    $('#customer').val($(this).val())
+                });
+                $('#hold_ref_v').change(function(){
+                    $('#hold_ref').val($(this).val())
+                });
+                $('#submit-hold').click(function(){
+                    if($('#hold_ref_v').val()!=''){
+                        $('#submit').trigger('click')
+                    }else{
+                        bootbox.alert('Please type the hold bill referebce');
+                        return false
+                    }
+                })
+            });
+        });
+        if(DTIME){
+            function sivamtime(){
+                now=new Date();
+                var month_names=new Array();
+                month_names[month_names.length]="January";
+                month_names[month_names.length]="February";
+                month_names[month_names.length]="March";
+                month_names[month_names.length]="April";
+                month_names[month_names.length]="May";
+                month_names[month_names.length]="June";
+                month_names[month_names.length]="July";
+                month_names[month_names.length]="August";
+                month_names[month_names.length]="September";
+                month_names[month_names.length]="October";
+                month_names[month_names.length]="November";
+                month_names[month_names.length]="December";
+                var day_names=new Array();
+                day_names[day_names.length]="Sunday";
+                day_names[day_names.length]="Monday";
+                day_names[day_names.length]="Tuesday";
+                day_names[day_names.length]="Wednesday";
+                day_names[day_names.length]="Thursday";
+                day_names[day_names.length]="Friday";
+                day_names[day_names.length]="Saturday";
+                hour=now.getHours();
+                min=now.getMinutes();
+                sec=now.getSeconds();
+                if(min<=9){
+                    min="0"+min
+                }
+                if(sec<=9){
+                    sec="0"+sec
+                }
+                if(hour>12){
+                    hour=hour-12;
+                    add="PM"
+                }else{
+                    hour=hour;
+                    add="AM"
+                }
+                if(hour==12){
+                    add="PM"
+                }
+                time=day_names[now.getDay()]+", "+
+                    now.getDate()+" "+month_names[now.getMonth()]+" "+
+                    now.getFullYear()+", "+
+                    ((hour<=9)?"0"+hour:hour)+
+                    ":"+min+":"+sec+" "+add;
+                if(document.getElementById){
+                        document.getElementById('cur-time').innerHTML=time
+                }else if(document.layers){
+                    document.layers.theTime.document.write(time);
+                    document.layers.theTime.document.close()
+                }
+                setTimeout("sivamtime()",1000)
+            }
+            window.onload=sivamtime
+        }
+    </script>
 </body>
 </html>
