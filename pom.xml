@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.maguzman</groupId>
-    <artifactId>onbronPOS</artifactId>
+    <artifactId>ProyectoDBD</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>onbronPOS Maven Webapp</name>
+    <name>ProyectoDBD Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <!--Especificando las versiones de las dependencias-->
     <properties>
@@ -220,7 +220,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>onbronPOS</finalName>
+        <finalName>ProyectoDBD</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -245,7 +245,7 @@
                 <version>2.5</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                    <warName>onbronPOS</warName>
+                    <warName>ProyectoDBD</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>

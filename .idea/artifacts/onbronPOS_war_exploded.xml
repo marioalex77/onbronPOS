@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="onbronPOS:war exploded">
-    <output-path>$PROJECT_DIR$/target/onbronPOS</output-path>
+    <output-path>$PROJECT_DIR$/target/ProyectoDBD</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="onbronPOS" />
+          <element id="module-output" name="ProyectoDBD" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
@@ -58,9 +58,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/onbronPOS/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/ProyectoDBD/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="onbronPOS/web/Web" />
+      <element id="javaee-facet-resources" facet="ProyectoDBD/web/Web" />
     </root>
   </artifact>
 </component>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/onbronPOS.iml" filepath="$PROJECT_DIR$/onbronPOS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProyectoDBD.iml" filepath="$PROJECT_DIR$/ProyectoDBD.iml" />
     </modules>
   </component>
 </project>
